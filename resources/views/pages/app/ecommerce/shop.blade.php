@@ -17,7 +17,7 @@
                         class="form-control" required="">
                 </div>
                 <div class="col-xl-6 col-lg-6 col-md-3 col-sm-3 mb-4 ms-auto">
-                    <a href="/modern-dark-menu/add" class="btn btn-primary w-100 btn-lg mb-4">
+                    <a href="/add" class="btn btn-primary w-100 btn-lg mb-4">
                         <span class="btn-text-inner"><i class="fab fa-servicestack"></i>
                             {{ __('trans.add_new_service') }}</span>
                     </a>
@@ -25,12 +25,12 @@
             </div>
 
             <div class="row">
-                @unless (count($products) == 0)
+                @unless (count((array) $products) == 0)
                     @foreach ($products as $product)
                         <div class="col-xxl-2 col-xl-3 col-lg-3 col-md-4 col-sm-6 mb-4">
-                            <a class="card style-6" href="/modern-dark-menu/detail/{{ $product->id }}">
+                            <a class="card style-6" href="/product/{{ $product->id }}/details">
                                 <span class="badge badge-primary"><i class="fas fa-star"></i> {{ __('trans.new') }}</span>
-                                <img src="{{ $product->image ? asset('storage/' . $product->image) : asset('no-image.png') }}"
+                                <img src="{{ $product->image ? asset($product->image) : asset('no-image.png') }}"
                                     class="card-img-top" alt="..." style="width: 182px; height: 182px;">
                                 <div class="card-footer">
                                     <div class="row">
@@ -43,12 +43,12 @@
                             </a>
                             <div class="container mt-1">
                                 <div class="btn btn-success mb-1" style="width: 75px; height: 35px;">
-                                    <a href="/modern-dark-menu/edit/{{ $product->id }}" class="text-white">
+                                    <a href="/product/edit/{{ $product->id }}" class="text-white">
                                         <i class="far fa-edit"></i>
                                     </a>
                                 </div>
                                 <div class="btn btn-danger mb-1" style="width: 75px; height: 35px;">
-                                    <form method="POST" action="/modern-dark-menu/delete/{{ $product->id }}">
+                                    <form method="POST" action="/delete/{{ $product->id }}">
                                         @csrf
                                         <button type="submit"
                                             style="background-color: transparent; border: transparent; color: white;">
@@ -59,6 +59,7 @@
                             </div>
                         </div>
                     @endforeach
+                    {{ $products->links() }}
                 @else
                     <div class="container text-center">
                         <p>{{ __('trans.no_services_found') }}</p>

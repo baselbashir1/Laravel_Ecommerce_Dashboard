@@ -110,13 +110,13 @@
                         </div>
                     </div>
                     <div class="dropdown-item mb-2">
-                        <a href="/modern-dark-menu/profile">
+                        <a href="/profile">
                             <i class="fas fa-user"></i> <span>{{ __('trans.profile') }}</span>
                         </a>
                     </div>
                     @auth
                         <div class="dropdown-item">
-                            <form action="/modern-dark-menu/logout" method="POST">
+                            <form action="/logout" method="POST">
                                 @csrf
                                 <div class="text-center">
                                     <button type="submit"
@@ -129,7 +129,7 @@
                         </div>
                     @else
                         <div class="dropdown-item">
-                            <a href="/modern-dark-menu/sign-in">
+                            <a href="/sign-in">
                                 <i class="fas fa-sign-in-alt"></i>
                                 {{ __('trans.login') }}
                             </a>

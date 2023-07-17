@@ -22,8 +22,8 @@ class UserController extends Controller
         $user = User::create($formFields);
         auth()->login($user);
 
-        if (app()->getLocale() == 'en') return redirect('/modern-dark-menu/dashboard');
-        if (app()->getLocale() == 'ar') return redirect('/rtl/modern-dark-menu/dashboard');
+        if (app()->getLocale() == 'en') return redirect('/dashboard');
+        if (app()->getLocale() == 'ar') return redirect('/rtl/dashboard');
     }
 
     public function viewSignIn()
@@ -42,8 +42,8 @@ class UserController extends Controller
         if (auth()->attempt($formFields)) {
             $request->session()->regenerate();
 
-            if (app()->getLocale() == 'en') return redirect('/modern-dark-menu/dashboard');
-            if (app()->getLocale() == 'ar') return redirect('/rtl/modern-dark-menu/dashboard');
+            if (app()->getLocale() == 'en') return redirect('/dashboard');
+            if (app()->getLocale() == 'ar') return redirect('/rtl/dashboard');
         }
 
         return back()->withErrors(['email' => 'Invalid Credentials'])->onlyInput('email');
@@ -56,8 +56,8 @@ class UserController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        if (app()->getLocale() == 'en') return redirect('/modern-dark-menu/sign-in');
-        if (app()->getLocale() == 'ar') return redirect('/rtl/modern-dark-menu/sign-in');
+        if (app()->getLocale() == 'en') return redirect('/sign-in');
+        if (app()->getLocale() == 'ar') return redirect('/rtl/sign-in');
     }
 
     public function profile()

@@ -45,7 +45,7 @@
                                             <h2>{{ __('trans.sign_up') }}</h2>
                                             <p>{{ __('trans.enter_em_pass_reg') }}</p>
                                         </div>
-                                        <form method="POST" action="/modern-dark-menu/register">
+                                        <form method="POST" action="/register">
                                             @csrf
                                             <div class="col-md-12">
                                                 <div class="mb-3">
@@ -109,8 +109,8 @@
                                         </form>
                                         <div class="col-12">
                                             <div class="text-center">
-                                                <p class="mb-0">{{ __('trans.have_account') }} <a
-                                                        href="/modern-dark-menu/sign-in" class="text-warning">
+                                                <p class="mb-0">{{ __('trans.have_account') }} <a href="/sign-in"
+                                                        class="text-warning">
                                                         {{ __('trans.sign_in') }}</a></p>
                                             </div>
                                         </div>

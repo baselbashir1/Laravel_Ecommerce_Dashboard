@@ -13,7 +13,7 @@
         <div class="navbar-nav theme-brand flex-row  text-center">
             <div class="nav-logo">
                 <div class="nav-item theme-logo">
-                    <a href="/modern-dark-menu/dashboard">
+                    <a href="/dashboard">
                         <img src="{{ Vite::asset('resources/images/logo.svg') }}" class="navbar-logo logo-dark"
                             alt="logo">
                         <img src="{{ Vite::asset('resources/images/logo2.svg') }}" class="navbar-logo logo-light"
@@ -21,7 +21,7 @@
                     </a>
                 </div>
                 <div class="nav-item theme-text">
-                    <a href="/modern-dark-menu/dashboard" class="nav-link"> CORK </a>
+                    <a href="/" class="nav-link"> HyperX </a>
                 </div>
             </div>
             <div class="nav-item sidebar-toggle">
@@ -38,7 +38,7 @@
         <div class="shadow-bottom"></div>
         <ul class="list-unstyled menu-categories" id="accordionExample">
             <li class="menu">
-                <a href="/modern-dark-menu/dashboard" class="dropdown-toggle">
+                <a href="/dashboard" class="dropdown-toggle">
                     <div class="">
                         <i class="fas fa-chart-pie"></i>
                         <span class="ml-1">{{ __('trans.dashboard') }}</span>
@@ -53,10 +53,50 @@
                     </svg><span style="text-transform:uppercase">{{ __('trans.services_management') }}</span></div>
             </li>
             <li class="menu">
-                <a href="/modern-dark-menu/services" class="dropdown-toggle">
+                <a href="/products" class="dropdown-toggle">
                     <div class="">
                         <i class="fab fa-servicestack"></i>
-                        <span class="ml-1">{{ __('trans.services_table') }}</span>
+                        <span class="ml-1">Products</span>
+                    </div>
+                </a>
+            </li>
+            <li class="menu">
+                <a href="/services" class="dropdown-toggle">
+                    <div class="">
+                        <i class="fab fa-servicestack"></i>
+                        <span class="ml-1">Customers</span>
+                    </div>
+                </a>
+            </li>
+            <li class="menu">
+                <a href="/services" class="dropdown-toggle">
+                    <div class="">
+                        <i class="fab fa-servicestack"></i>
+                        <span class="ml-1">Orders</span>
+                    </div>
+                </a>
+            </li>
+            <li class="menu">
+                <a href="/services" class="dropdown-toggle">
+                    <div class="">
+                        <i class="fab fa-servicestack"></i>
+                        <span class="ml-1">Users</span>
+                    </div>
+                </a>
+            </li>
+            <li class="menu">
+                <a href="/services" class="dropdown-toggle">
+                    <div class="">
+                        <i class="fab fa-servicestack"></i>
+                        <span class="ml-1">Payments</span>
+                    </div>
+                </a>
+            </li>
+            <li class="menu">
+                <a href="/services" class="dropdown-toggle">
+                    <div class="">
+                        <i class="fab fa-servicestack"></i>
+                        <span class="ml-1">Carts</span>
                     </div>
                 </a>
             </li>

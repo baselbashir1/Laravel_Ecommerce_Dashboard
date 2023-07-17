@@ -30,26 +30,26 @@
                                 <div id="main-slider" class="splide">
                                     <div class="splide__track">
                                         <ul class="splide__list">
-                                            @foreach ($serviceImages as $serviceImage)
-                                                <li class="splide__slide">
-                                                    <a href="{{ $serviceImage->image ? asset('storage/' . $serviceImage->image) : asset('no-image.png') }}"
-                                                        class="glightbox">
-                                                        <img alt="ecommerce"
-                                                            src="{{ $serviceImage->image ? asset('storage/' . $serviceImage->image) : asset('no-image.png') }}">
-                                                    </a>
-                                                </li>
-                                            @endforeach
+                                            {{-- @foreach ($serviceImages as $serviceImage) --}}
+                                            <li class="splide__slide">
+                                                <a href="{{ $product->image ? asset($product->image) : asset('no-image.png') }}"
+                                                    class="glightbox">
+                                                    <img alt="ecommerce"
+                                                        src="{{ $product->image ? asset($product->image) : asset('no-image.png') }}">
+                                                </a>
+                                            </li>
+                                            {{-- @endforeach --}}
                                         </ul>
                                     </div>
                                 </div>
                                 <div id="thumbnail-slider" class="splide">
                                     <div class="splide__track">
                                         <ul class="splide__list">
-                                            @foreach ($serviceImages as $serviceImage)
-                                                <li class="splide__slide"><img alt="ecommerce"
-                                                        src="{{ $serviceImage->image ? asset('storage/' . $serviceImage->image) : asset('no-image.png') }}">
-                                                </li>
-                                            @endforeach
+                                            {{-- @foreach ($serviceImages as $serviceImage) --}}
+                                            <li class="splide__slide"><img alt="ecommerce"
+                                                    src="{{ $product->image ? asset($product->image) : asset('no-image.png') }}">
+                                            </li>
+                                            {{-- @endforeach --}}
                                         </ul>
                                     </div>
                                 </div>
@@ -58,15 +58,19 @@
                                 class="col-xxl-4 col-xl-5 col-lg-12 col-md-12 col-12 mt-xl-0 mt-5 align-self-center text-center">
                                 <div class="product-details-content">
                                     <h3 class="product-title mb-0"><i class="fab fa-servicestack"></i>
-                                        {{ $service->title }}</h3>
+                                        {{ $product->title }}</h3>
                                     <hr class="mb-4">
                                     <div class="container">
                                         <p style="font-size: 20px"><i class="fas fa-book-open"></i>
-                                            {{ $service->content }}</p>
+                                            {{ $product->description }}</p>
+                                    </div>
+                                    <hr class="mb-5 mt-4">
+                                    <div class="container">
+                                        <p style="font-size: 20px">{{ $product->price }} $</p>
                                     </div>
                                     <hr class="mb-5 mt-4">
                                     <h4><i class="fas fa-image"></i> {{ __('trans.add_image') }}</h4>
-                                    <form action="/modern-dark-menu/detail/{{ $service->id }}/add-service-image"
+                                    <form action="/modern-dark-menu/detail/{{ $product->id }}/add-service-image"
                                         method="POST" enctype="multipart/form-data">
                                         @csrf
                                         <div class="col-xxl-12 col-xl-12 col-sm-12 mb-sm-0 mb-3 mt-3">

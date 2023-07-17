@@ -44,6 +44,7 @@ class ServiceController extends Controller
     {
         $formFields = $request->all();
 
+        // edit here add /storage/....
         if ($request->hasFile('picture')) {
             $formFields['picture'] = $request->file('picture')->store('pictures', 'public');
         }
@@ -63,8 +64,8 @@ class ServiceController extends Controller
             'service_id' => $service_id
         ]);
 
-        if (app()->getLocale() == 'en') return redirect('/modern-dark-menu/dashboard');
-        if (app()->getLocale() == 'ar') return redirect('/rtl/modern-dark-menu/dashboard');
+        if (app()->getLocale() == 'en') return redirect('/dashboard');
+        if (app()->getLocale() == 'ar') return redirect('/rtl/dashboard');
     }
 
     public function edit(Service $service)
@@ -89,8 +90,8 @@ class ServiceController extends Controller
 
         $service->update($formFields);
 
-        if (app()->getLocale() == 'en') return redirect('/modern-dark-menu/dashboard');
-        if (app()->getLocale() == 'ar') return redirect('/rtl/modern-dark-menu/dashboard');
+        if (app()->getLocale() == 'en') return redirect('/dashboard');
+        if (app()->getLocale() == 'ar') return redirect('/rtl/dashboard');
     }
 
     public function destroy(Request $request, Service $service)
