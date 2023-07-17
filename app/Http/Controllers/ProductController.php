@@ -95,13 +95,13 @@ class ProductController extends Controller
 
     public function update(Request $request, $id)
     {
-        // $formFields = $request->all();
-        $formFields = $request->validate([
-            'title' => 'required',
-            'image' => 'required',
-            'price' => 'required',
-            'description' => 'required'
-        ]);
+        $formFields = $request->all();
+        // $formFields = $request->validate([
+        //     'title' => 'required',
+        //     'image' => 'required',
+        //     'price' => 'required',
+        //     'description' => 'required'
+        // ]);
 
         if ($request->hasFile('image')) {
             $formFields['image'] = '/storage/' . $request->file('image')->store('images', 'public');
