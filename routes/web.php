@@ -57,9 +57,9 @@ Route::group(
             Route::get('/profile', [UserController::class, 'profile']);
         });
         Route::controller(UserController::class)->group(function () {
-            Route::get('/sign-up', 'viewSignUp')->name('sign-up');
+            Route::get('/sign-up', 'viewSignUp')->name('register');
             Route::post('/register', 'register');
-            Route::get('/sign-in', 'viewSignIn')->name('sign-in');
+            Route::get('/sign-in', 'viewSignIn')->name('login');
             Route::post('/login', 'login');
             Route::post('/logout', 'logout');
         });
