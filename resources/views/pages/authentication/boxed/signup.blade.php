@@ -50,7 +50,7 @@
                                             <div class="col-md-12">
                                                 <div class="mb-3">
                                                     <label class="form-label">{{ __('trans.name') }}</label>
-                                                    <input type="text"
+                                                    <input type="text" name="name"
                                                         class="form-control add-billing-address-input">
                                                     @error('name')
                                                         <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
