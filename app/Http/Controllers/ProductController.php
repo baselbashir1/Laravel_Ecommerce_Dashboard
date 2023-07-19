@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Requests\ServiceRequest;
 
@@ -55,7 +56,20 @@ class ProductController extends Controller
 
         // edit here add /storage/....
         if ($request->hasFile('image')) {
-            $formFields['image'] = '/storage/' . $request->file('image')->store('images', 'public');
+            // $formFields['image'] = '/storage/' . $request->file('image')->store('images', 'public');
+            $student = app('firebase.firestore')->database()->collection('Images')->document((string)$request['title']);
+            $firebase_storage_path = 'Images/';
+            $name = $student->id();
+            $localfolder = public_path('firebase-temp-uploads') . '/';
+            $image = $request['image'];
+            $extension = $image->getClientOriginalExtension();
+            $file = $name . '.' . $extension;
+            if ($image->move($localfolder, $file)) {
+                $uploadedfile = fopen($localfolder . $file, 'r');
+                app('firebase.storage')->getBucket()->upload($uploadedfile, ['name' => $firebase_storage_path . $file]);
+                //will remove from local laravel folder
+                // unlink($localfolder . $file);
+            }
         }
 
         // if ($request->hasFile('service_image')) {
