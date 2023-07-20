@@ -51,7 +51,7 @@
                                             <td>
                                                 <div class="d-flex justify-content-left align-items-center">
                                                     <div class="avatar me-3">
-                                                        <img src="{{ $product->image ? asset($product->image) : asset('no-image.png') }}"
+                                                        <img src="{{ $product->image? app('firebase.storage')->getBucket()->object('Images/' . $product->image)->signedUrl(new DateTime('9999-01-01')): asset('no-image.png') }}"
                                                             alt="Avatar" width="64" height="64">
                                                     </div>
                                                 </div>

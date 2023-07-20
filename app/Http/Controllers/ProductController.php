@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Kreait\Firebase\Factory;
 use App\Http\Requests\ServiceRequest;
+use Google\Auth\Credentials\ServiceAccountCredentials;
 
 class ProductController extends Controller
 {
@@ -23,9 +25,19 @@ class ProductController extends Controller
     public function products()
     {
         $products = Product::all();
+
+        // $expiresAt = new \DateTime('9999-01-01');
+        // $image = app('firebase.storage')->getBucket()->object("Images/request.png");
+
+        // if ($image->exists()) {
+        //     $img = $image->signedUrl($expiresAt);
+        // } else {
+        //     $img = null;
+        // }
         // $serviceImages = ServiceImage::all();
 
         return view('pages.app.ecommerce.list', ['title' => 'Products'], ['products' => $products]);
+        // return view('pages.app.ecommerce.list', ['title' => 'Products'], ['products' => $products, 'img' => $img]);
         // if (app()->getLocale() == 'ar') return view('pages-rtl.app.ecommerce.list', ['title' => 'Services'], ['services' => $services, 'serviceImages' => $serviceImages]);
     }
 
@@ -53,22 +65,23 @@ class ProductController extends Controller
         // $formFields = $request->all();
 
         // $formFields = $request->all();
-
+        // $imageDeleted = app('firebase.storage')->getBucket()->object("Images/defT5uT7SDu9K5RFtIdl.png")->file();
         // edit here add /storage/....
         if ($request->hasFile('image')) {
             // $formFields['image'] = '/storage/' . $request->file('image')->store('images', 'public');
-            $student = app('firebase.firestore')->database()->collection('Images')->document((string)$request['title']);
+            $formFields['image'] = app('firebase.firestore')->database()->collection('Images')->document($_FILES['image']['name']);
             $firebase_storage_path = 'Images/';
-            $name = $student->id();
+            $name = $formFields['image']->id();
             $localfolder = public_path('firebase-temp-uploads') . '/';
             $image = $request['image'];
-            $extension = $image->getClientOriginalExtension();
-            $file = $name . '.' . $extension;
+            // $extension = $image->getClientOriginalExtension();
+            // $file = $name . '.' . $extension;
+            $file = $name;
             if ($image->move($localfolder, $file)) {
                 $uploadedfile = fopen($localfolder . $file, 'r');
                 app('firebase.storage')->getBucket()->upload($uploadedfile, ['name' => $firebase_storage_path . $file]);
                 //will remove from local laravel folder
-                // unlink($localfolder . $file);
+                unlink($localfolder . $file);
             }
         }
 
@@ -80,7 +93,7 @@ class ProductController extends Controller
 
         Product::create([
             'title' => $formFields['title'],
-            'image' => $formFields['image'],
+            'image' => $formFields['image']->id(),
             'price' => $formFields['price'],
             'description' => $formFields['description'],
             'published' => 1,

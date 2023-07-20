@@ -27,7 +27,7 @@ Route::group(
     function () {
         // Route::prefix('modern-dark-menu')->group(function () {
         Route::middleware(['auth'])->group(function () {
-
+            Route::get('/', [ProductController::class, 'index']);
             Route::get('/dashboard', [ProductController::class, 'index']);
             Route::get('/products', [ProductController::class, 'products']);
             Route::get('/product/add', [ProductController::class, 'create']);
