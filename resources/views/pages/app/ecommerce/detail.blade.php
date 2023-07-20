@@ -32,10 +32,10 @@
                                         <ul class="splide__list">
                                             {{-- @foreach ($serviceImages as $serviceImage) --}}
                                             <li class="splide__slide">
-                                                <a href="{{ $product->image ? asset($product->image) : asset('no-image.png') }}"
+                                                <a href="{{ $product->image? app('firebase.storage')->getBucket()->object('Images/' . $product->image)->signedUrl(new DateTime('9999-01-01')): asset('no-image.png') }}"
                                                     class="glightbox">
                                                     <img alt="ecommerce"
-                                                        src="{{ $product->image ? asset($product->image) : asset('no-image.png') }}">
+                                                        src="{{ $product->image? app('firebase.storage')->getBucket()->object('Images/' . $product->image)->signedUrl(new DateTime('9999-01-01')): asset('no-image.png') }}">
                                                 </a>
                                             </li>
                                             {{-- @endforeach --}}
@@ -47,7 +47,7 @@
                                         <ul class="splide__list">
                                             {{-- @foreach ($serviceImages as $serviceImage) --}}
                                             <li class="splide__slide"><img alt="ecommerce"
-                                                    src="{{ $product->image ? asset($product->image) : asset('no-image.png') }}">
+                                                    src="{{ $product->image? app('firebase.storage')->getBucket()->object('Images/' . $product->image)->signedUrl(new DateTime('9999-01-01')): asset('no-image.png') }}">
                                             </li>
                                             {{-- @endforeach --}}
                                         </ul>

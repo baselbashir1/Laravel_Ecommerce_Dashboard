@@ -38,7 +38,7 @@
                                         <label for="image"><i class="fas fa-image"></i>
                                             {{ __('trans.service_picture') }}</label>
                                         <div class="text-center">
-                                            <img src="{{ $product->image ? asset($product->image) : asset('no-image.png') }}"
+                                            <img src="{{ $product->image? app('firebase.storage')->getBucket()->object('Images/' . $product->image)->signedUrl(new DateTime('9999-01-01')): asset('no-image.png') }}"
                                                 class="card-img-top" alt="..."
                                                 style="width: 250px; height: 250px;">
                                         </div>

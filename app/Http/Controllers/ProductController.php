@@ -26,18 +26,9 @@ class ProductController extends Controller
     {
         $products = Product::all();
 
-        // $expiresAt = new \DateTime('9999-01-01');
-        // $image = app('firebase.storage')->getBucket()->object("Images/request.png");
-
-        // if ($image->exists()) {
-        //     $img = $image->signedUrl($expiresAt);
-        // } else {
-        //     $img = null;
-        // }
         // $serviceImages = ServiceImage::all();
 
         return view('pages.app.ecommerce.list', ['title' => 'Products'], ['products' => $products]);
-        // return view('pages.app.ecommerce.list', ['title' => 'Products'], ['products' => $products, 'img' => $img]);
         // if (app()->getLocale() == 'ar') return view('pages-rtl.app.ecommerce.list', ['title' => 'Services'], ['services' => $services, 'serviceImages' => $serviceImages]);
     }
 
@@ -62,25 +53,16 @@ class ProductController extends Controller
             'description' => 'required'
         ]);
 
-        // $formFields = $request->all();
-
-        // $formFields = $request->all();
-        // $imageDeleted = app('firebase.storage')->getBucket()->object("Images/defT5uT7SDu9K5RFtIdl.png")->file();
-        // edit here add /storage/....
         if ($request->hasFile('image')) {
-            // $formFields['image'] = '/storage/' . $request->file('image')->store('images', 'public');
             $formFields['image'] = app('firebase.firestore')->database()->collection('Images')->document($_FILES['image']['name']);
             $firebase_storage_path = 'Images/';
             $name = $formFields['image']->id();
             $localfolder = public_path('firebase-temp-uploads') . '/';
             $image = $request['image'];
-            // $extension = $image->getClientOriginalExtension();
-            // $file = $name . '.' . $extension;
             $file = $name;
             if ($image->move($localfolder, $file)) {
                 $uploadedfile = fopen($localfolder . $file, 'r');
                 app('firebase.storage')->getBucket()->upload($uploadedfile, ['name' => $firebase_storage_path . $file]);
-                //will remove from local laravel folder
                 unlink($localfolder . $file);
             }
         }
@@ -88,8 +70,6 @@ class ProductController extends Controller
         // if ($request->hasFile('service_image')) {
         //     $formFields['service_image'] = $request->file('service_image')->store('images', 'public');
         // }
-
-        // $formFields['user_id'] = auth()->id();
 
         Product::create([
             'title' => $formFields['title'],
@@ -123,31 +103,33 @@ class ProductController extends Controller
     public function update(Request $request, $id)
     {
         $formFields = $request->all();
-        // $formFields = $request->validate([
-        //     'title' => 'required',
-        //     'image' => 'required',
-        //     'price' => 'required',
-        //     'description' => 'required'
-        // ]);
+        $product = Product::where('id', $id)->first();
 
         if ($request->hasFile('image')) {
-            $formFields['image'] = '/storage/' . $request->file('image')->store('images', 'public');
+            $formFields['image'] = app('firebase.firestore')->database()->collection('Images')->document($product->image);
+            $firebase_storage_path = 'Images/';
+            $name = $formFields['image']->id();
+            $localfolder = public_path('firebase-temp-uploads') . '/';
+            $image = $request['image'];
+            $file = $name;
+            if ($image->move($localfolder, $file)) {
+                $uploadedfile = fopen($localfolder . $file, 'r');
+                app('firebase.storage')->getBucket()->upload($uploadedfile, ['name' => $firebase_storage_path . $file]);
+                unlink($localfolder . $file);
+            }
         }
 
         // if ($request->hasFile('service_image')) {
         //     $formFields['service_image'] = $request->file('service_image')->store('images', 'public');
         // }
 
-        // $service->update($formFields);
         Product::where('id', $id)->update([
             'title' => $formFields['title'],
-            'image' => $formFields['image'],
+            'image' => $formFields['image']->id(),
             'price' => $formFields['price'],
             'description' => $formFields['description'],
             'updated_by' => auth()->user()->id
         ]);
-
-
 
         // if (app()->getLocale() == 'en') 
         return redirect('/products');
@@ -157,10 +139,11 @@ class ProductController extends Controller
     public function destroy($id)
     {
         // $serviceImages = ServiceImage::where('service_id', $service->id);
-
         // $serviceImages->delete();
-        Product::where('id', $id)->delete();
-        // $service->delete();
+
+        $product = Product::where('id', $id)->first();
+        $product->forceDelete();
+        app('firebase.storage')->getBucket()->object('Images/' . $product->image)->delete();
 
         return back();
     }
