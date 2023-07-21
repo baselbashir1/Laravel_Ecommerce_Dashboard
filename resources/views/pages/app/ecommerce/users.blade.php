@@ -53,7 +53,13 @@
                                             <td>{{ $user->name }}</td>
                                             <td>{{ $user->email }}</td>
                                             <td>{{ substr($user->password, 0, 10) }}</td>
-                                            <td>{{ $user->is_admin }}</td>
+                                            <td>
+                                                @if ($user->is_admin == 1)
+                                                    Admin
+                                                @else
+                                                    Normal user
+                                                @endif
+                                            </td>
                                             <td>{{ $user->created_at }}</td>
 
                                             <td class="text-center">
