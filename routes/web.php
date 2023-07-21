@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
@@ -37,6 +38,8 @@ Route::group(
             Route::post('/edit-product/{id}', [ProductController::class, 'update']);
             Route::post('/delete-product/{id}', [ProductController::class, 'destroy']);
 
+            Route::get('/orders', [OrderController::class, 'index']);
+            Route::get('/order/{id}/details', [OrderController::class, 'show']);
             // Route::get('/product/edit/{product}', [ProductController::class, 'show']);
 
             // Route::controller(ServiceController::class)->group(function () {
