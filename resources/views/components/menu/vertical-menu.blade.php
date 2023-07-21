@@ -61,7 +61,7 @@
                 </a>
             </li>
             <li class="menu">
-                <a href="/services" class="dropdown-toggle">
+                <a href="/customers" class="dropdown-toggle">
                     <div class="">
                         <i class="fab fa-servicestack"></i>
                         <span class="ml-1">Customers</span>
@@ -77,7 +77,7 @@
                 </a>
             </li>
             <li class="menu">
-                <a href="/services" class="dropdown-toggle">
+                <a href="/users" class="dropdown-toggle">
                     <div class="">
                         <i class="fab fa-servicestack"></i>
                         <span class="ml-1">Users</span>
@@ -85,7 +85,7 @@
                 </a>
             </li>
             <li class="menu">
-                <a href="/services" class="dropdown-toggle">
+                <a href="/payments" class="dropdown-toggle">
                     <div class="">
                         <i class="fab fa-servicestack"></i>
                         <span class="ml-1">Payments</span>

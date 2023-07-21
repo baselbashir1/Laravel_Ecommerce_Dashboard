@@ -20,14 +20,14 @@
             </x-slot>
             <!-- END GLOBAL MANDATORY STYLES -->
 
-            {{-- <div class="row layout-top-spacing">
+            <div class="row layout-top-spacing">
                 <div class="col-xl-12 col-lg-6">
-                    <a href="/product/add" class="btn btn-primary w-100 btn-lg mb-4">
+                    <a href="#" class="btn btn-primary w-100 btn-lg mb-4">
                         <span class="btn-text-inner"><i class="fab fa-servicestack"></i>
-                            Add New Product</span>
+                            Add New User</span>
                     </a>
                 </div>
-            </div> --}}
+            </div>
 
             <div class="row layout-top-spacing">
                 <div class="col-xl-12 col-lg-12 col-sm-12 layout-spacing">
@@ -36,48 +36,39 @@
                             <thead>
                                 <tr>
                                     <th><i class="fab fa-servicestack"></i> #</th>
-                                    <th><i class="fas fa-image"></i> Total Price</th>
-                                    <th><i class="fas fa-book-open"></i> Status</th>
-                                    <th><i class="fas fa-book-open"></i> User</th>
+                                    <th><i class="fas fa-image"></i> name</th>
+                                    <th><i class="fas fa-book-open"></i> email</th>
+                                    <th><i class="fas fa-book-open"></i> password</th>
+                                    <th><i class="fas fa-book-open"></i> role</th>
+                                    <th><i class="fas fa-book-open"></i> created at</th>
                                     <th class="no-content text-center"><i class="fas fa-recycle"></i>
                                         {{ __('trans.action') }}</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @unless (count((array) $orders) == 0)
-                                    @foreach ($orders as $order)
+                                @unless (count((array) $users) == 0)
+                                    @foreach ($users as $user)
                                         <tr>
-                                            <td>{{ $order->id }}</td>
-                                            <td>{{ $order->total_price }}</td>
-                                            <td>
-                                                @if ($order->status == 'paid')
-                                                    <div class="btn btn-success"
-                                                        style="pointer-events: none; border-radius: 100px">
-                                                        {{ $order->status }}
-                                                    </div>
-                                                @else
-                                                    <div class="btn btn-warning"
-                                                        style="pointer-events: none; border-radius: 100px">
-                                                        {{ $order->status }}
-                                                    </div>
-                                                @endif
-                                            </td>
-                                            <td>
-                                                {{ $order->user ? $order->user->name : 'User not found for this order.' }}
-                                            </td>
+                                            <td>{{ $user->id }}</td>
+                                            <td>{{ $user->name }}</td>
+                                            <td>{{ $user->email }}</td>
+                                            <td>{{ substr($user->password, 0, 10) }}</td>
+                                            <td>{{ $user->is_admin }}</td>
+                                            <td>{{ $user->created_at }}</td>
+
                                             <td class="text-center">
                                                 <div style="display: flex">
-                                                    <a href="/order/{{ $order->id }}/details"
-                                                        class="btn btn-primary mt-2 mb-1">order details</a>
-                                                    {{-- <a href="" style="width: 50px; height: 40px"
-                                                        class="btn btn-success m-2"><i class="far fa-edit"></i></a> --}}
-                                                    {{-- <form method="POST" class="mt-2" action="">
+                                                    <a href="#" style="width: 50px; height: 40px"
+                                                        class="btn btn-primary mt-2 mb-1"><i class="fas fa-info"></i></a>
+                                                    <a href="#" style="width: 50px; height: 40px"
+                                                        class="btn btn-success m-2"><i class="far fa-edit"></i></a>
+                                                    <form method="POST" class="mt-2" action="">
                                                         @csrf
                                                         <button type="submit" class="btn btn-danger"
                                                             style="width: 50px; height: 40px">
                                                             <i class="far fa-trash-alt"></i>
                                                         </button>
-                                                    </form> --}}
+                                                    </form>
                                                 </div>
                                             </td>
                                         </tr>

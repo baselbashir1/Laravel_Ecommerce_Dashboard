@@ -7,97 +7,91 @@
         <!-- BEGIN GLOBAL MANDATORY STYLES -->
         <x-slot:headerFiles>
             <!--  BEGIN CUSTOM STYLE FILE  -->
-            <link rel="stylesheet" href="{{ asset('plugins/bootstrap-touchspin/jquery.bootstrap-touchspin.min.css') }}">
-            <link rel="stylesheet" href="{{ asset('plugins/glightbox/glightbox.min.css') }}">
-            <link rel="stylesheet" href="{{ asset('plugins/splide/splide.min.css') }}">
-
-            @vite(['resources/scss/light/assets/components/tabs.scss'])
-            @vite(['resources/scss/light/assets/components/accordions.scss'])
-            @vite(['resources/scss/light/assets/apps/ecommerce-details.scss'])
-            @vite(['resources/scss/dark/assets/components/tabs.scss'])
-            @vite(['resources/scss/dark/assets/components/accordions.scss'])
-            @vite(['resources/scss/dark/assets/apps/ecommerce-details.scss'])
+            <link rel="stylesheet" href="{{ asset('plugins/table/datatable/datatables.css') }}">
+            @vite(['resources/scss/light/plugins/table/datatable/dt-global_style.scss'])
+            @vite(['resources/scss/dark/plugins/table/datatable/dt-global_style.scss'])
             <!--  END CUSTOM STYLE FILE  -->
+
+            <style>
+                #ecommerce-list img {
+                    border-radius: 18px;
+                }
+            </style>
             </x-slot>
             <!-- END GLOBAL MANDATORY STYLES -->
 
             <div class="row layout-top-spacing">
-                <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-4">
+                <div class="col-xl-12 col-lg-6">
+                    <a href="/orders" class="btn btn-primary w-100 btn-lg mb-4">
+                        <span class="btn-text-inner"><i class="fab fa-servicestack"></i>
+                            View all orders</span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="row layout-top-spacing">
+                <div class="col-xl-12 col-lg-12 col-sm-12 layout-spacing">
                     <div class="widget-content widget-content-area br-8">
-                        <div class="row justify-content-center">
-                            <div class="col-xxl-5 col-xl-6 col-lg-7 col-md-7 col-sm-9 col-12 pe-3">
-                                <!-- Swiper -->
-                                <div id="main-slider" class="splide">
-                                    <div class="splide__track">
-                                        <ul class="splide__list">
-                                            {{-- @foreach ($serviceImages as $serviceImage) --}}
-                                            <li class="splide__slide">
-                                                <a href="{{ $product->image? app('firebase.storage')->getBucket()->object('Images/' . $product->image)->signedUrl(new DateTime('9999-01-01')): asset('no-image.png') }}"
-                                                    class="glightbox">
-                                                    <img alt="ecommerce"
-                                                        src="{{ $product->image? app('firebase.storage')->getBucket()->object('Images/' . $product->image)->signedUrl(new DateTime('9999-01-01')): asset('no-image.png') }}">
-                                                </a>
-                                            </li>
-                                            {{-- @endforeach --}}
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div id="thumbnail-slider" class="splide">
-                                    <div class="splide__track">
-                                        <ul class="splide__list">
-                                            {{-- @foreach ($serviceImages as $serviceImage) --}}
-                                            <li class="splide__slide"><img alt="ecommerce"
-                                                    src="{{ $product->image? app('firebase.storage')->getBucket()->object('Images/' . $product->image)->signedUrl(new DateTime('9999-01-01')): asset('no-image.png') }}">
-                                            </li>
-                                            {{-- @endforeach --}}
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <div
-                                class="col-xxl-4 col-xl-5 col-lg-12 col-md-12 col-12 mt-xl-0 mt-5 align-self-center text-center">
-                                <div class="product-details-content">
-                                    <h3 class="product-title mb-0"><i class="fab fa-servicestack"></i>
-                                        {{ $product->title }}</h3>
-                                    <hr class="mb-4">
-                                    <div class="container">
-                                        <p style="font-size: 20px"><i class="fas fa-book-open"></i>
-                                            {{ $product->description }}</p>
-                                    </div>
-                                    <hr class="mb-5 mt-4">
-                                    <div class="container">
-                                        <p style="font-size: 20px">{{ $product->price }} $</p>
-                                    </div>
-                                    <hr class="mb-5 mt-4">
-                                    <h4><i class="fas fa-image"></i> {{ __('trans.add_image') }}</h4>
-                                    <form action="/modern-dark-menu/detail/{{ $product->id }}/add-service-image"
-                                        method="POST" enctype="multipart/form-data">
-                                        @csrf
-                                        <div class="col-xxl-12 col-xl-12 col-sm-12 mb-sm-0 mb-3 mt-3">
-                                            <div class="row mb-4">
-                                                <div class="col-sm-12">
-                                                    <input type="file" name="img" class="form-control">
+                        <table id="ecommerce-list" class="table dt-table-hover" style="width:100%">
+                            <thead>
+                                <tr>
+                                    <th><i class="fab fa-servicestack"></i> #</th>
+                                    <th><i class="fas fa-image"></i> Product Name</th>
+                                    <th><i class="fas fa-book-open"></i> Product Image</th>
+                                    <th><i class="fas fa-book-open"></i> Product Price</th>
+                                    <th><i class="fas fa-book-open"></i> Product Quantity</th>
+                                    {{-- <th class="no-content text-center"><i class="fas fa-recycle"></i>
+                                        {{ __('trans.action') }}</th> --}}
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @unless (count((array) $orderItems) == 0)
+                                    @foreach ($orderItems as $orderItem)
+                                        <tr>
+                                            <td>{{ $orderItem->id }}</td>
+                                            <td>{{ $orderItem->product->title }}</td>
+                                            <td>
+                                                <div class="d-flex justify-content-left align-items-center">
+                                                    <div class="avatar me-3">
+                                                        <img src="{{ $orderItem->product->image? app('firebase.storage')->getBucket()->object('Images/' . $orderItem->product->image)->signedUrl(new DateTime('9999-01-01')): asset('no-image.png') }}"
+                                                            alt="Avatar" width="64" height="64">
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <button type="submit" class="btn btn-primary w-100 btn-lg">
-                                                <span class="btn-text-inner">{{ __('trans.submit') }}</span>
-                                            </button>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
+                                            </td>
+                                            <td>{{ $orderItem->unit_price }} $</td>
+                                            <td>{{ $orderItem->quantity }}</td>
+
+                                            {{-- <td class="text-center"> --}}
+                                            {{-- <div style="display: flex"> --}}
+                                            {{-- <a href="#" class="btn btn-primary mt-2 mb-1">change
+                                                        order status</a> --}}
+                                            {{-- <a href="" style="width: 50px; height: 40px"
+                                                        class="btn btn-success m-2"><i class="far fa-edit"></i></a>
+                                                    <form method="POST" class="mt-2" action="">
+                                                        @csrf
+                                                        <button type="submit" class="btn btn-danger"
+                                                            style="width: 50px; height: 40px">
+                                                            <i class="far fa-trash-alt"></i>
+                                                        </button>
+                                                    </form> --}}
+                                            {{-- </div> --}}
+                                            {{-- </td> --}}
+                                        </tr>
+                                    @endforeach
+                                @endunless
+                            </tbody>
+                        </table>
                     </div>
                 </div>
+
             </div>
 
             <!--  BEGIN CUSTOM SCRIPTS FILE  -->
             <x-slot:footerFiles>
-                <script src="{{ asset('plugins/global/vendors.min.js') }}"></script>
-                <script src="{{ asset('plugins/bootstrap-touchspin/jquery.bootstrap-touchspin.min.js') }}"></script>
-                <script src="{{ asset('plugins/glightbox/glightbox.min.js') }}"></script>
-                <script src="{{ asset('plugins/splide/splide.min.js') }}"></script>
-                @vite(['resources/assets/js/apps/ecommerce-details.js'])
+                <script type="module" src="{{asset('plugins/global/vendors.min.js')}}"></script>
+                @vite(['resources/assets/js/custom.js'])
+                <script type="module" src="{{asset('plugins/table/datatable/datatables.js')}}"></script>
+
                 </x-slot>
                 <!--  END CUSTOM SCRIPTS FILE  -->
 </x-base-layout>

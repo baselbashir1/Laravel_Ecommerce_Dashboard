@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
@@ -40,6 +42,10 @@ Route::group(
 
             Route::get('/orders', [OrderController::class, 'index']);
             Route::get('/order/{id}/details', [OrderController::class, 'show']);
+
+            Route::get('/users', [UserController::class, 'index']);
+            Route::get('/payments', [PaymentController::class, 'index']);
+            Route::get('/customers', [CustomerController::class, 'index']);
             // Route::get('/product/edit/{product}', [ProductController::class, 'show']);
 
             // Route::controller(ServiceController::class)->group(function () {

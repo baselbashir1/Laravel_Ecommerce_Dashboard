@@ -35,4 +35,9 @@ class Order extends Model
         return Order::query()->where('status', OrderStatus::Unpaid->value)
             ->where('created_at', '<', Carbon::now()->subHours($hours));
     }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

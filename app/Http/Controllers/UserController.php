@@ -8,6 +8,13 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
+    public function index()
+    {
+        $users = User::all();
+
+        return view('pages.app.ecommerce.users', ['title' => 'Users'], ['users' => $users]);
+    }
+
     public function viewSignUp()
     {
         if (app()->getLocale() == 'en') return view('pages.authentication.boxed.signup', ['title' => 'SignUp']);
