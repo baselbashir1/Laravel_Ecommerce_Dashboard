@@ -36,8 +36,8 @@ class Order extends Model
             ->where('created_at', '<', Carbon::now()->subHours($hours));
     }
 
-    public function user()
+    public function user(): HasOne
     {
-        return $this->belongsTo(User::class);
+        return $this->hasOne(User::class, 'id', 'created_by');
     }
 }

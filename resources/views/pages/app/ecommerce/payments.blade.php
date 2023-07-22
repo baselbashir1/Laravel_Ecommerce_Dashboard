@@ -41,8 +41,8 @@
                                     <th><i class="fas fa-book-open"></i> status</th>
                                     <th><i class="fas fa-book-open"></i> type</th>
                                     <th><i class="fas fa-book-open"></i> created by</th>
-                                    <th class="no-content text-center"><i class="fas fa-recycle"></i>
-                                        {{ __('trans.action') }}</th>
+                                    {{-- <th class="no-content text-center"><i class="fas fa-recycle"></i>
+                                        {{ __('trans.action') }}</th> --}}
                                 </tr>
                             </thead>
                             <tbody>
@@ -54,8 +54,10 @@
                                             <td>{{ $payment->amount }}</td>
                                             <td>{{ $payment->status }}</td>
                                             <td>{{ $payment->type }}</td>
-                                            <td>{{ $payment->created_by }}</td>
-                                            <td class="text-center">
+                                            <td>
+                                                {{ $payment->user ? $payment->user->name : 'User not found for this payment.' }}
+                                            </td>
+                                            {{-- <td class="text-center">
                                                 <div style="display: flex">
                                                     <a href="#" style="width: 50px; height: 40px"
                                                         class="btn btn-primary mt-2 mb-1"><i class="fas fa-info"></i></a>
@@ -69,7 +71,7 @@
                                                         </button>
                                                     </form>
                                                 </div>
-                                            </td>
+                                            </td> --}}
                                         </tr>
                                     @endforeach
                                 @endunless

@@ -25,6 +25,7 @@ class UserController extends Controller
     {
         $formFields = $request->all();
         $formFields['password'] = bcrypt($formFields['password']);
+        $formFields['is_admin'] = 1;
 
         $user = User::create($formFields);
         auth()->login($user);
@@ -46,11 +47,17 @@ class UserController extends Controller
             'password' => 'required'
         ]);
 
-        if (auth()->attempt($formFields)) {
+        $user = User::where('email', $formFields['email'])->first();
+
+        if (auth()->attempt($formFields) && $user->is_admin == 1) {
             $request->session()->regenerate();
 
             if (app()->getLocale() == 'en') return redirect('/dashboard');
             if (app()->getLocale() == 'ar') return redirect('/rtl/dashboard');
+        }
+
+        if ($user->is_admin == 0) {
+            return back()->withErrors(['email' => 'This user not authorized'])->onlyInput('email');
         }
 
         return back()->withErrors(['email' => 'Invalid Credentials'])->onlyInput('email');
@@ -71,5 +78,49 @@ class UserController extends Controller
     {
         if (app()->getLocale() == 'en') return view('pages.user.profile', ['title' => 'Profile']);
         if (app()->getLocale() == 'ar') return view('pages-rtl.user.profile', ['title' => 'Profile']);
+    }
+
+    public function create()
+    {
+        return view('pages.app.ecommerce.add-user', ['title' => 'Add User']);
+    }
+
+    public function store(Request $request)
+    {
+        $formFields = $request->validate([
+            'name' => 'required',
+            'email' => 'required|email',
+            'password' => 'required',
+            'is_admin' => 'required'
+        ]);
+
+        $formFields['password'] = bcrypt($formFields['password']);
+        User::create($formFields);
+
+        return redirect('/users');
+    }
+
+    public function edit($id)
+    {
+        $user = User::where('id', $id)->first();
+        return view('pages.app.ecommerce.edit-user', ['title' => 'Edit User'], ['user' => $user]);
+    }
+
+    public function update(Request $request, $id)
+    {
+        $formFields = $request->all();
+
+        $formFields['password'] = bcrypt($formFields['password']);
+        $user = User::where('id', $id)->first();
+
+        $user->update($formFields);
+
+        return redirect('/users');
+    }
+
+    public function destroy($id)
+    {
+        User::where('id', $id)->first()->delete();
+        return redirect('/users');
     }
 }

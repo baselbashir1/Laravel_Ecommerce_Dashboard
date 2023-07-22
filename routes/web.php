@@ -44,7 +44,14 @@ Route::group(
             Route::get('/order/{id}/details', [OrderController::class, 'show']);
 
             Route::get('/users', [UserController::class, 'index']);
+            Route::get('/user/add', [UserController::class, 'create']);
+            Route::post('/add-user', [UserController::class, 'store']);
+            Route::get('/user/{id}/edit', [UserController::class, 'edit']);
+            Route::post('/edit-user/{id}', [UserController::class, 'update']);
+            Route::post('/delete-user/{id}', [UserController::class, 'destroy']);
+
             Route::get('/payments', [PaymentController::class, 'index']);
+
             Route::get('/customers', [CustomerController::class, 'index']);
             // Route::get('/product/edit/{product}', [ProductController::class, 'show']);
 

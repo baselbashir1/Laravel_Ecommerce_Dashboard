@@ -22,7 +22,7 @@
 
             <div class="row layout-top-spacing">
                 <div class="col-xl-12 col-lg-6">
-                    <a href="#" class="btn btn-primary w-100 btn-lg mb-4">
+                    <a href="/user/add" class="btn btn-primary w-100 btn-lg mb-4">
                         <span class="btn-text-inner"><i class="fab fa-servicestack"></i>
                             Add New User</span>
                     </a>
@@ -64,11 +64,11 @@
 
                                             <td class="text-center">
                                                 <div style="display: flex">
-                                                    <a href="#" style="width: 50px; height: 40px"
-                                                        class="btn btn-primary mt-2 mb-1"><i class="fas fa-info"></i></a>
-                                                    <a href="#" style="width: 50px; height: 40px"
-                                                        class="btn btn-success m-2"><i class="far fa-edit"></i></a>
-                                                    <form method="POST" class="mt-2" action="">
+                                                    <a href="/user/{{ $user->id }}/edit"
+                                                        style="width: 50px; height: 40px" class="btn btn-success m-2"><i
+                                                            class="far fa-edit"></i></a>
+                                                    <form method="POST" class="mt-2"
+                                                        action="/delete-user/{{ $user->id }}">
                                                         @csrf
                                                         <button type="submit" class="btn btn-danger"
                                                             style="width: 50px; height: 40px">

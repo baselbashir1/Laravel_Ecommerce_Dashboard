@@ -30,7 +30,7 @@
                         <div class="col-xxl-2 col-xl-3 col-lg-3 col-md-4 col-sm-6 mb-4">
                             <a class="card style-6" href="/product/{{ $product->id }}/details">
                                 <span class="badge badge-primary"><i class="fas fa-star"></i> {{ __('trans.new') }}</span>
-                                <img src="{{ $product->image ? asset($product->image) : asset('no-image.png') }}"
+                                <img src="{{ $product->image? app('firebase.storage')->getBucket()->object('Images/' . $product->image)->signedUrl(new DateTime('9999-01-01')): asset('no-image.png') }}"
                                     class="card-img-top" alt="..." style="width: 182px; height: 182px;">
                                 <div class="card-footer">
                                     <div class="row">

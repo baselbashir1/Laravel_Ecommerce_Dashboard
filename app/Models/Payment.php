@@ -16,4 +16,9 @@ class Payment extends Model
     {
         return $this->hasOne(Order::class, 'id', 'order_id');
     }
+
+    public function user(): HasOne
+    {
+        return $this->hasOne(User::class, 'id', 'created_by');
+    }
 }
