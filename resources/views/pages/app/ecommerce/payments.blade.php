@@ -36,7 +36,6 @@
                             <thead>
                                 <tr>
                                     <th><i class="fab fa-servicestack"></i> #</th>
-                                    <th><i class="fas fa-image"></i> order id</th>
                                     <th><i class="fas fa-book-open"></i> amount</th>
                                     <th><i class="fas fa-book-open"></i> status</th>
                                     <th><i class="fas fa-book-open"></i> type</th>
@@ -49,10 +48,21 @@
                                 @unless (count((array) $payments) == 0)
                                     @foreach ($payments as $payment)
                                         <tr>
-                                            <td>{{ $payment->id }}</td>
                                             <td>{{ $payment->order_id }}</td>
                                             <td>{{ $payment->amount }}</td>
-                                            <td>{{ $payment->status }}</td>
+                                            <td>
+                                                @if ($payment->status == 'paid')
+                                                    <div class="btn btn-success"
+                                                        style="pointer-events: none; border-radius: 100px">
+                                                        {{ $payment->status }}
+                                                    </div>
+                                                @else
+                                                    <div class="btn btn-warning"
+                                                        style="pointer-events: none; border-radius: 100px">
+                                                        {{ $payment->status }}
+                                                    </div>
+                                                @endif
+                                            </td>
                                             <td>{{ $payment->type }}</td>
                                             <td>
                                                 {{ $payment->user ? $payment->user->name : 'User not found for this payment.' }}

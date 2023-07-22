@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PaymentController;
@@ -53,6 +54,11 @@ Route::group(
             Route::get('/payments', [PaymentController::class, 'index']);
 
             Route::get('/customers', [CustomerController::class, 'index']);
+
+            Route::get('/carts', [CartController::class, 'index']);
+            Route::get('/edit-cart/{id}', [CartController::class, 'edit']);
+            Route::post('/edit-cart/{id}', [CartController::class, 'update']);
+            Route::post('/delete-cart/{id}', [CartController::class, 'destroy']);
             // Route::get('/product/edit/{product}', [ProductController::class, 'show']);
 
             // Route::controller(ServiceController::class)->group(function () {

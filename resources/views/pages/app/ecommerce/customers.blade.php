@@ -35,7 +35,8 @@
                         <table id="ecommerce-list" class="table dt-table-hover" style="width:100%">
                             <thead>
                                 <tr>
-                                    <th><i class="fab fa-servicestack"></i> user id</th>
+                                    <th><i class="fab fa-servicestack"></i> #</th>
+                                    <th><i class="fab fa-servicestack"></i> user</th>
                                     <th><i class="fas fa-book-open"></i> fname</th>
                                     <th><i class="fas fa-book-open"></i> lname</th>
                                     <th><i class="fas fa-book-open"></i> phone</th>
@@ -50,10 +51,23 @@
                                     @foreach ($customers as $customer)
                                         <tr>
                                             <td>{{ $customer->user_id }}</td>
+                                            <td>{{ $customer->user->name }}</td>
                                             <td>{{ $customer->first_name }}</td>
                                             <td>{{ $customer->last_name }}</td>
                                             <td>{{ $customer->phone }}</td>
-                                            <td>{{ $customer->status }}</td>
+                                            <td>
+                                                @if ($customer->status == 'active')
+                                                    <div class="btn btn-success"
+                                                        style="pointer-events: none; border-radius: 100px">
+                                                        {{ $customer->status }}
+                                                    </div>
+                                                @else
+                                                    <div class="btn btn-danger"
+                                                        style="pointer-events: none; border-radius: 100px">
+                                                        {{ $customer->status }}
+                                                    </div>
+                                                @endif
+                                            </td>
                                             <td>{{ $customer->created_by }}</td>
 
                                             <td class="text-center">
