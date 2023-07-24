@@ -36,10 +36,12 @@ Route::group(
             Route::get('/products', [ProductController::class, 'products']);
             Route::get('/product/add', [ProductController::class, 'create']);
             Route::post('/add-product', [ProductController::class, 'store']);
-            Route::get('/product/{id}/details', [ProductController::class, 'show']);
-            Route::get('/product/{id}/edit', [ProductController::class, 'edit']);
+            Route::get('/product/{id}/details', [ProductController::class, 'show'])->name('product-details');
+            Route::get('/product/{id}/edit', [ProductController::class, 'edit'])->name('edit-product');
             Route::post('/edit-product/{id}', [ProductController::class, 'update']);
             Route::post('/delete-product/{id}', [ProductController::class, 'destroy']);
+            Route::post('/add-product-image/{id}', [ProductController::class, 'addProductImage']);
+            Route::post('/edit-product-image/{id}', [ProductController::class, 'editProductImage']);
 
             Route::get('/orders', [OrderController::class, 'index']);
             Route::get('/order/{id}/details', [OrderController::class, 'show']);

@@ -30,26 +30,36 @@
                                 <div id="main-slider" class="splide">
                                     <div class="splide__track">
                                         <ul class="splide__list">
-                                            {{-- @foreach ($serviceImages as $serviceImage) --}}
                                             <li class="splide__slide">
-                                                <a href="{{ $product->image? app('firebase.storage')->getBucket()->object('Images/' . $product->image)->signedUrl(new DateTime('9999-01-01')): asset('no-image.png') }}"
+                                                <a href="{{ app('firebase.storage')->getBucket()->object('Images/' . $product->image)->signedUrl(new DateTime('9999-01-01')) }}"
                                                     class="glightbox">
                                                     <img alt="ecommerce"
-                                                        src="{{ $product->image? app('firebase.storage')->getBucket()->object('Images/' . $product->image)->signedUrl(new DateTime('9999-01-01')): asset('no-image.png') }}">
+                                                        src="{{ app('firebase.storage')->getBucket()->object('Images/' . $product->image)->signedUrl(new DateTime('9999-01-01')) }}">
                                                 </a>
                                             </li>
-                                            {{-- @endforeach --}}
+                                            @foreach ($productImages as $productImage)
+                                                <li class="splide__slide">
+                                                    <a href="{{ app('firebase.storage')->getBucket()->object('Product Images/' . $productImage->image)->signedUrl(new DateTime('9999-01-01')) }}"
+                                                        class="glightbox">
+                                                        <img alt="ecommerce"
+                                                            src="{{ app('firebase.storage')->getBucket()->object('Product Images/' . $productImage->image)->signedUrl(new DateTime('9999-01-01')) }}">
+                                                    </a>
+                                                </li>
+                                            @endforeach
                                         </ul>
                                     </div>
                                 </div>
                                 <div id="thumbnail-slider" class="splide">
                                     <div class="splide__track">
                                         <ul class="splide__list">
-                                            {{-- @foreach ($serviceImages as $serviceImage) --}}
                                             <li class="splide__slide"><img alt="ecommerce"
-                                                    src="{{ $product->image? app('firebase.storage')->getBucket()->object('Images/' . $product->image)->signedUrl(new DateTime('9999-01-01')): asset('no-image.png') }}">
+                                                    src="{{ app('firebase.storage')->getBucket()->object('Images/' . $product->image)->signedUrl(new DateTime('9999-01-01')) }}">
                                             </li>
-                                            {{-- @endforeach --}}
+                                            @foreach ($productImages as $productImage)
+                                                <li class="splide__slide"><img alt="ecommerce"
+                                                        src="{{ app('firebase.storage')->getBucket()->object('Product Images/' . $productImage->image)->signedUrl(new DateTime('9999-01-01')) }}">
+                                                </li>
+                                            @endforeach
                                         </ul>
                                     </div>
                                 </div>
@@ -69,21 +79,21 @@
                                         <p style="font-size: 20px">{{ $product->price }} $</p>
                                     </div>
                                     <hr class="mb-5 mt-4">
-                                    <h4><i class="fas fa-image"></i> {{ __('trans.add_image') }}</h4>
-                                    <form action="/modern-dark-menu/detail/{{ $product->id }}/add-service-image"
-                                        method="POST" enctype="multipart/form-data">
+                                    {{-- <h4><i class="fas fa-image"></i> {{ __('trans.add_image') }}</h4> --}}
+                                    {{-- <form action="/add-product-image/{{ $product->id }}" method="POST"
+                                        enctype="multipart/form-data">
                                         @csrf
                                         <div class="col-xxl-12 col-xl-12 col-sm-12 mb-sm-0 mb-3 mt-3">
                                             <div class="row mb-4">
                                                 <div class="col-sm-12">
-                                                    <input type="file" name="img" class="form-control">
+                                                    <input type="file" name="product_image" class="form-control">
                                                 </div>
                                             </div>
                                             <button type="submit" class="btn btn-primary w-100 btn-lg">
                                                 <span class="btn-text-inner">{{ __('trans.submit') }}</span>
                                             </button>
                                         </div>
-                                    </form>
+                                    </form> --}}
                                 </div>
                             </div>
                         </div>

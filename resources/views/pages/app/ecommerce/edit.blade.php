@@ -88,63 +88,57 @@
                     </div>
                 </form>
             </div>
-            @if (count((array) $product->image) > 1)
+            @if (count($productImages) > 0)
                 <div class="row mb-4 layout-spacing layout-top-spacing">
-                    {{-- @unless (count((array) $serviceImages) == 0) --}}
-                    <h3><i class="fas fa-images"></i> {{ __('trans.service_images') }}</h3>
-                    {{-- @foreach ($serviceImages as $serviceImage) --}}
-                    <div class="col-xxl-9 col-xl-12 col-lg-12 col-md-12 col-sm-12 mt-4">
-                        <div class="widget-content widget-content-area ecommerce-create-section">
-                            <div class="row mb-4">
-                                <div class="col-sm-12">
-                                    <div class="row">
-                                        <div class="text-center">
-                                            <img src="{{ $product->image ? asset($product->image) : asset('no-image.png') }}"
-                                                class="card-img-top" alt="..."
-                                                style="width: 250px; height: 250px;">
+                    <h3>Product Images</h3>
+                    @foreach ($productImages as $productImage)
+                        <div class="col-xxl-9 col-xl-12 col-lg-12 col-md-12 col-sm-12 mt-4">
+                            <div class="widget-content widget-content-area ecommerce-create-section">
+                                <div class="row mb-4">
+                                    <div class="col-sm-12">
+                                        <div class="row">
+                                            <div class="text-center">
+                                                <img src="{{ app('firebase.storage')->getBucket()->object('Product Images/' . $productImage->image)->signedUrl(new DateTime('9999-01-01')) }}"
+                                                    class="card-img-top" alt="..."
+                                                    style="width: 250px; height: 250px;">
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
+                                <form method="POST" action="/edit-product-image/{{ $product->id }}"
+                                    enctype="multipart/form-data">
+                                    @csrf
+                                    <div class="container mt-2 mb-2">
+                                        <input type="file" name="product_image" class="form-control"
+                                            value="{{ $productImage->image }}">
+                                    </div>
+                                    <div class="container">
+                                        <button type="submit" class="btn btn-success w-100">
+                                            <i class="far fa-edit"></i> {{ __('trans.update_image') }}
+                                        </button>
+                                    </div>
+                                </form>
+                                <form method="POST" {{-- action="/modern-dark-menu/delete/{{ $service->id }}/delete-service-image/{{ $serviceImage->id }}" --}}>
+                                    @csrf
+                                    <div class="container mt-2">
+                                        <button type="submit" class="btn btn-danger w-100">
+                                            <i class="far fa-trash-alt"></i> {{ __('trans.delete_image') }}
+                                        </button>
+                                    </div>
+                                </form>
                             </div>
-                            <form method="POST" {{-- action="/modern-dark-menu/edit/{{ $service->id }}/edit-service-image/{{ $serviceImage->id }}" --}} enctype="multipart/form-data">
-                                @csrf
-                                <div class="container mt-2 mb-2">
-                                    <input type="file" name="img" class="form-control"
-                                        placeholder="Service Picture" value="{{ $product->image }}">
-                                </div>
-                                <div class="container">
-                                    <button type="submit" class="btn btn-success w-100">
-                                        <i class="far fa-edit"></i> {{ __('trans.update_image') }}
-                                    </button>
-                                </div>
-                            </form>
-                            <form method="POST" {{-- action="/modern-dark-menu/delete/{{ $service->id }}/delete-service-image/{{ $serviceImage->id }}" --}}>
-                                @csrf
-                                <div class="container mt-2">
-                                    <button type="submit" class="btn btn-danger w-100">
-                                        <i class="far fa-trash-alt"></i> {{ __('trans.delete_image') }}
-                                    </button>
-                                </div>
-                            </form>
                         </div>
-                    </div>
-                    {{-- @endforeach --}}
-                    {{-- @else --}}
-                    {{-- <h3 class="text-center">{{ __('trans.no_images_found') }}</h3> --}}
-                    {{-- @endunless --}}
+                    @endforeach
                 </div>
-
                 <div class="row mb-4 layout-spacing layout-top-spacing">
-                    {{-- @unless (count((array) $serviceImages) == 0) --}}
                     <h3><i class="fas fa-image"></i> Add new image</h3>
-                    {{-- @foreach ($serviceImages as $serviceImage) --}}
                     <div class="col-xxl-9 col-xl-12 col-lg-12 col-md-12 col-sm-12 mt-4">
                         <div class="widget-content widget-content-area ecommerce-create-section">
-                            <form method="POST" action="" enctype="multipart/form-data">
+                            <form method="POST" action="/add-product-image/{{ $product->id }}"
+                                enctype="multipart/form-data">
                                 @csrf
                                 <div class="container mt-2 mb-2">
-                                    <input type="file" name="img" class="form-control"
-                                        placeholder="Service Picture">
+                                    <input type="file" name="product_image" class="form-control">
                                 </div>
                                 <div class="container">
                                     <button type="submit" class="btn btn-primary w-100">
@@ -154,23 +148,17 @@
                             </form>
                         </div>
                     </div>
-                    {{-- @endforeach --}}
-                    {{-- @else --}}
-                    {{-- <h3 class="text-center">{{ __('trans.no_images_found') }}</h3> --}}
-                    {{-- @endunless --}}
                 </div>
             @else
                 <div class="row mb-4 layout-spacing layout-top-spacing">
-                    {{-- @unless (count((array) $serviceImages) == 0) --}}
                     <h3><i class="fas fa-images"></i> No images for this product</h3>
-                    {{-- @foreach ($serviceImages as $serviceImage) --}}
                     <div class="col-xxl-9 col-xl-12 col-lg-12 col-md-12 col-sm-12 mt-4">
                         <div class="widget-content widget-content-area ecommerce-create-section">
-                            <form method="POST" action="" enctype="multipart/form-data">
+                            <form method="POST" action="/add-product-image/{{ $product->id }}"
+                                enctype="multipart/form-data">
                                 @csrf
                                 <div class="container mt-2 mb-2">
-                                    <input type="file" name="img" class="form-control"
-                                        placeholder="Service Picture">
+                                    <input type="file" name="product_image" class="form-control">
                                 </div>
                                 <div class="container">
                                     <button type="submit" class="btn btn-primary w-100">
@@ -180,10 +168,6 @@
                             </form>
                         </div>
                     </div>
-                    {{-- @endforeach --}}
-                    {{-- @else --}}
-                    {{-- <h3 class="text-center">{{ __('trans.no_images_found') }}</h3> --}}
-                    {{-- @endunless --}}
                 </div>
             @endif
             <!--  BEGIN CUSTOM SCRIPTS FILE  -->

@@ -18,6 +18,7 @@ class ProductFactory extends Factory
      */
     public function definition(): array
     {
+        // $files = app('firebase.firestore')->database()->collection('Images');
         $files = Storage::files('public/images');
         $randomFile = Arr::random($files);
         $imageUrl = Storage::url($randomFile);
