@@ -119,7 +119,8 @@
                                         </button>
                                     </div>
                                 </form>
-                                <form method="POST" {{-- action="/modern-dark-menu/delete/{{ $service->id }}/delete-service-image/{{ $serviceImage->id }}" --}}>
+                                <form method="POST"
+                                    action="/edit-product/{{ $product->id }}/delete-product-image/{{ $productImage->id }}">
                                     @csrf
                                     <div class="container mt-2">
                                         <button type="submit" class="btn btn-danger w-100">

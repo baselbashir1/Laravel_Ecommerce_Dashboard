@@ -41,7 +41,8 @@ Route::group(
             Route::post('/edit-product/{id}', [ProductController::class, 'update']);
             Route::post('/delete-product/{id}', [ProductController::class, 'destroy']);
             Route::post('/edit-product/{id}/add-product-image', [ProductController::class, 'addProductImage']);
-            Route::post('/edit-product/{productId}/edit-product-image/{imageProductId}', [ProductController::class, 'editProductImage']);
+            Route::post('/edit-product/{productId}/edit-product-image/{productImageId}', [ProductController::class, 'editProductImage']);
+            Route::post('/edit-product/{productId}/delete-product-image/{productImageId}', [ProductController::class, 'deleteProductImage']);
 
             Route::get('/orders', [OrderController::class, 'index']);
             Route::get('/order/{id}/details', [OrderController::class, 'show']);

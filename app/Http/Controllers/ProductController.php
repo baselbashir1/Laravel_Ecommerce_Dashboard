@@ -200,17 +200,15 @@ class ProductController extends Controller
         return redirect()->route('edit-product', $id);
     }
 
-    public function editProductImage(Request $request, $productId, $imageProductId)
+    public function editProductImage(Request $request, $productId, $productImageId)
     {
         $formFields = $request->validate([
             'product_image' => 'required'
         ]);
 
-        $productImage = ProductImage::where('id', $imageProductId)->first();
-
         if ($request->hasFile('product_image')) {
             $formFields['product_image'] = app('firebase.firestore')->database()->collection('Product Images')->document($_FILES['product_image']['name']);
-            app('firebase.storage')->getBucket()->object('Product Images/' . $productImage->image)->delete();
+            // app('firebase.storage')->getBucket()->object('Product Images/' . $productImage->image)->delete();
             $firebase_storage_path = 'Product Images/';
             $name = $formFields['product_image']->id();
             $localfolder = public_path('firebase-temp-uploads') . '/';
@@ -223,9 +221,18 @@ class ProductController extends Controller
             }
         }
 
-        ProductImage::where('id', $imageProductId)->update([
+        ProductImage::where('id', $productImageId)->update([
             'image' => $formFields['product_image']->id()
         ]);
+
+        return redirect()->route('edit-product', $productId);
+    }
+
+    public function deleteProductImage($productId, $productImageId)
+    {
+        $productImage = ProductImage::where('id', $productImageId)->first();
+        app('firebase.storage')->getBucket()->object('Product Images/' . $productImage->image)->delete();
+        $productImage->delete();
 
         return redirect()->route('edit-product', $productId);
     }
