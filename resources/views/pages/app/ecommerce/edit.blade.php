@@ -46,7 +46,7 @@
                                 </div>
                                 <div class="container mt-2 mb-2">
                                     <input type="file" name="image" class="form-control"
-                                        placeholder="Service Picture" value="{{ $product->image }}">
+                                        value="{{ $product->image }}" required>
                                 </div>
                             </div>
                             <div class="row mb-4">
@@ -105,12 +105,13 @@
                                         </div>
                                     </div>
                                 </div>
-                                <form method="POST" action="/edit-product-image/{{ $product->id }}"
+                                <form method="POST"
+                                    action="/edit-product/{{ $product->id }}/edit-product-image/{{ $productImage->id }}"
                                     enctype="multipart/form-data">
                                     @csrf
                                     <div class="container mt-2 mb-2">
                                         <input type="file" name="product_image" class="form-control"
-                                            value="{{ $productImage->image }}">
+                                            value="{{ $productImage->image }}" required>
                                     </div>
                                     <div class="container">
                                         <button type="submit" class="btn btn-success w-100">
@@ -134,11 +135,11 @@
                     <h3><i class="fas fa-image"></i> Add new image</h3>
                     <div class="col-xxl-9 col-xl-12 col-lg-12 col-md-12 col-sm-12 mt-4">
                         <div class="widget-content widget-content-area ecommerce-create-section">
-                            <form method="POST" action="/add-product-image/{{ $product->id }}"
+                            <form method="POST" action="/edit-product/{{ $product->id }}/add-product-image"
                                 enctype="multipart/form-data">
                                 @csrf
                                 <div class="container mt-2 mb-2">
-                                    <input type="file" name="product_image" class="form-control">
+                                    <input type="file" name="product_image" class="form-control" required>
                                 </div>
                                 <div class="container">
                                     <button type="submit" class="btn btn-primary w-100">
@@ -154,11 +155,11 @@
                     <h3><i class="fas fa-images"></i> No images for this product</h3>
                     <div class="col-xxl-9 col-xl-12 col-lg-12 col-md-12 col-sm-12 mt-4">
                         <div class="widget-content widget-content-area ecommerce-create-section">
-                            <form method="POST" action="/add-product-image/{{ $product->id }}"
+                            <form method="POST" action="/edit-product/{{ $product->id }}/add-product-image"
                                 enctype="multipart/form-data">
                                 @csrf
                                 <div class="container mt-2 mb-2">
-                                    <input type="file" name="product_image" class="form-control">
+                                    <input type="file" name="product_image" class="form-control" required>
                                 </div>
                                 <div class="container">
                                     <button type="submit" class="btn btn-primary w-100">

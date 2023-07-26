@@ -40,8 +40,8 @@ Route::group(
             Route::get('/product/{id}/edit', [ProductController::class, 'edit'])->name('edit-product');
             Route::post('/edit-product/{id}', [ProductController::class, 'update']);
             Route::post('/delete-product/{id}', [ProductController::class, 'destroy']);
-            Route::post('/add-product-image/{id}', [ProductController::class, 'addProductImage']);
-            Route::post('/edit-product-image/{id}', [ProductController::class, 'editProductImage']);
+            Route::post('/edit-product/{id}/add-product-image', [ProductController::class, 'addProductImage']);
+            Route::post('/edit-product/{productId}/edit-product-image/{imageProductId}', [ProductController::class, 'editProductImage']);
 
             Route::get('/orders', [OrderController::class, 'index']);
             Route::get('/order/{id}/details', [OrderController::class, 'show']);

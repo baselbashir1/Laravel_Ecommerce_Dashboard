@@ -133,7 +133,8 @@ class ProductController extends Controller
         $product = Product::where('id', $id)->first();
 
         if ($request->hasFile('image')) {
-            $formFields['image'] = app('firebase.firestore')->database()->collection('Images')->document($product->image);
+            $formFields['image'] = app('firebase.firestore')->database()->collection('Images')->document($_FILES['image']['name']);
+            app('firebase.storage')->getBucket()->object('Images/' . $product->image)->delete();
             $firebase_storage_path = 'Images/';
             $name = $formFields['image']->id();
             $localfolder = public_path('firebase-temp-uploads') . '/';
@@ -145,10 +146,6 @@ class ProductController extends Controller
                 unlink($localfolder . $file);
             }
         }
-
-        // if ($request->hasFile('service_image')) {
-        //     $formFields['service_image'] = $request->file('service_image')->store('images', 'public');
-        // }
 
         Product::where('id', $id)->update([
             'title' => $formFields['title'],
@@ -203,16 +200,17 @@ class ProductController extends Controller
         return redirect()->route('edit-product', $id);
     }
 
-    public function editProductImage(Request $request, $id)
+    public function editProductImage(Request $request, $productId, $imageProductId)
     {
         $formFields = $request->validate([
             'product_image' => 'required'
         ]);
 
-        $productImage = ProductImage::where('product_id', $id)->first();
+        $productImage = ProductImage::where('id', $imageProductId)->first();
 
         if ($request->hasFile('product_image')) {
-            $formFields['product_image'] = app('firebase.firestore')->database()->collection('Product Images')->document($productImage->image);
+            $formFields['product_image'] = app('firebase.firestore')->database()->collection('Product Images')->document($_FILES['product_image']['name']);
+            app('firebase.storage')->getBucket()->object('Product Images/' . $productImage->image)->delete();
             $firebase_storage_path = 'Product Images/';
             $name = $formFields['product_image']->id();
             $localfolder = public_path('firebase-temp-uploads') . '/';
@@ -225,10 +223,10 @@ class ProductController extends Controller
             }
         }
 
-        ProductImage::where('id', $id)->update([
+        ProductImage::where('id', $imageProductId)->update([
             'image' => $formFields['product_image']->id()
         ]);
 
-        return redirect()->route('edit-product', $id);
+        return redirect()->route('edit-product', $productId);
     }
 }
