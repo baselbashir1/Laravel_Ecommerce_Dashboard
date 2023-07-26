@@ -3,18 +3,23 @@
 return [
 
     'dashboard' => 'لوحة التحكم',
-    'services_table' => 'جدول الخدمات',
+    'products' => 'المنتجات',
+    'customers' => 'الزبائن',
+    'orders' => 'الطلبات',
+    'users' => 'المستخدمين',
+    'payments' => 'عمليات الشراء',
+    'carts' => 'السلل',
 
     'add_image' => 'إضافة صورة',
-    'service_images' => 'صور الخدمة',
-    'add_service' => 'إضافة خدمة',
+    'product_images' => 'صور المنتج',
+    'add_product' => 'إضافة منتج',
 
-    'services_management' => 'إدارة الخدمات',
+    'services_management' => 'testttttt',
 
-    'add_new_service' => 'إضافة خدمة جديدة',
-    'update_service_details' => 'تحديث تفاصيل الخدمة',
-    'upload_service_images' => 'تحميل صور الخدمة',
-    'upload_service_image' => 'تحميل صورة الخدمة',
+    'add_new_product' => 'إضافة منتج جديد',
+    'update_product_details' => 'تعديل تفاصيل المنتج',
+    'upload_product_images' => 'تحميل صور المنتج',
+    'upload_product_image' => 'تحميل صورة المنتج',
     'view' => 'عرض',
     'edit' => 'تعديل',
     'delete' => 'حذف',
@@ -23,12 +28,11 @@ return [
     'delete_image' => 'حذف الصورة',
     'action' => 'خيارات',
 
-    'service_title' => 'عنوان الخدمة',
-    'service_picture' => 'صورة الخدمة',
-    'service_content' => 'محتوى الخدمة',
-
-    'services' => 'الخدمات',
-    'users' => 'المستخدمين',
+    'product_title' => 'اسم المنتج',
+    'product_image' => 'صورة المنتج',
+    'product_description' => 'وصف المنتج',
+    'product_price' => 'سعر المنتج',
+    'product_published' => 'تم نشر المنتج',
 
     'profile' => 'الملف الشخصي',
 

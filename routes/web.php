@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProductController;
@@ -31,9 +32,10 @@ Route::group(
     function () {
         // Route::prefix('modern-dark-menu')->group(function () {
         Route::middleware(['auth'])->group(function () {
-            Route::get('/', [ProductController::class, 'index']);
-            Route::get('/dashboard', [ProductController::class, 'index']);
-            Route::get('/products', [ProductController::class, 'products']);
+            Route::get('/', [HomeController::class, 'index']);
+            Route::get('/dashboard', [HomeController::class, 'index']);
+
+            Route::get('/products', [ProductController::class, 'index']);
             Route::get('/product/add', [ProductController::class, 'create']);
             Route::post('/add-product', [ProductController::class, 'store']);
             Route::get('/product/{id}/details', [ProductController::class, 'show'])->name('product-details');

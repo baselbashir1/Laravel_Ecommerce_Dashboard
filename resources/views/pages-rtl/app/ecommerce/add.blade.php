@@ -28,7 +28,7 @@
             <!-- END GLOBAL MANDATORY STYLES -->
 
             <div class="row mb-4 layout-spacing layout-top-spacing">
-                <form method="POST" action="/modern-dark-menu/add-service" enctype="multipart/form-data">
+                <form method="POST" action="/add-product" enctype="multipart/form-data">
                     @csrf
                     <div class="col-xxl-9 col-xl-12 col-lg-12 col-md-12 col-sm-12">
                         <div class="widget-content widget-content-area ecommerce-create-section">
@@ -45,21 +45,42 @@
                             </div>
                             <div class="row mb-4">
                                 <div class="col-sm-12">
-                                    <label for="picture"><i class="fas fa-image"></i>
+                                    <label for="image"><i class="fas fa-image"></i>
                                         {{ __('trans.service_picture') }}</label>
-                                    <input type="file" name="picture" class="form-control" id="inputEmail3"
+                                    <input type="file" name="image" class="form-control" id="inputEmail3"
                                         placeholder="Service Picture">
                                 </div>
-                                @error('picture')
+                                @error('image')
                                     <p class="mt-2">{{ $message }}</p>
                                 @enderror
                             </div>
                             <div class="row mb-4">
                                 <div class="col-sm-12">
-                                    <label for="content"><i class="fas fa-book-open"></i>
+                                    <label for="title"><i class="fab fa-servicestack"></i>
+                                        Price</label>
+                                    <input type="number" name="price" class="form-control" id="inputEmail3"
+                                        placeholder="price">
+                                </div>
+                                @error('price')
+                                    <p class="mt-2">{{ $message }}</p>
+                                @enderror
+                            </div>
+                            <div class="row mb-4">
+                                <div class="col-sm-12">
+                                    <label for="description"><i class="fas fa-book-open"></i>
                                         {{ __('trans.service_content') }}</label>
-                                    <textarea name="content" cols="30" rows="10" class="form-control"
+                                    <textarea name="description" cols="30" rows="10" class="form-control"
                                         placeholder="{{ __('trans.service_content') }}"></textarea>
+                                </div>
+                                @error('description')
+                                    <p class="mt-2">{{ $message }}</p>
+                                @enderror
+                            </div>
+                            <div class="row mb-4">
+                                <div class="col-sm-12">
+                                    <label for="published"><i class="fas fa-book-open"></i>
+                                        publish</label>
+                                    <input type="checkbox" name="published" />
                                 </div>
                                 @error('content')
                                     <p class="mt-2">{{ $message }}</p>
@@ -67,20 +88,19 @@
                             </div>
                             <div class="row mb-4">
                                 <div class="col-sm-12">
-                                    <label for="service_image"><i class="fas fa-images"></i>
-                                        {{ __('trans.upload_service_image') }}</label>
-                                    <input type="file" name="service_image" class="form-control" id="inputEmail3"
-                                        placeholder="Service Picture">
+                                    <label for="product_image"><i class="fas fa-images"></i>
+                                        Upload Product Image
+                                    </label>
+                                    <input type="file" name="product_image" class="form-control">
                                 </div>
-                                @error('service_image')
+                                @error('product_image')
                                     <p class="mt-2">{{ $message }}</p>
                                 @enderror
                             </div>
                             <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 mt-4">
                                 <div class="widget-content widget-content-area ecommerce-create-section">
                                     <div class="col-sm-12">
-                                        <button type="submit"
-                                            class="btn btn-success w-100">{{ __('trans.add_service') }}</button>
+                                        <button type="submit" class="btn btn-success w-100">Add Product</button>
                                     </div>
                                 </div>
                             </div>

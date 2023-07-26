@@ -11,7 +11,7 @@
 
 <div class="sidebar-wrapper sidebar-theme">
     <nav id="sidebar">
-        <div class="navbar-nav theme-brand flex-row  text-center">
+        <div class="navbar-nav theme-brand flex-row text-center">
             <div class="nav-logo">
                 <div class="nav-item theme-logo">
                     <a href="/dashboard">
@@ -39,7 +39,7 @@
         <div class="shadow-bottom"></div>
         <ul class="list-unstyled menu-categories" id="accordionExample">
             <li class="menu">
-                <a href="/modern-dark-menu/dashboard" class="dropdown-toggle">
+                <a href="/dashboard" class="dropdown-toggle">
                     <div class="">
                         <i class="fas fa-chart-pie"></i>
                         <span class="ml-1">{{ __('trans.dashboard') }}</span>
@@ -54,10 +54,50 @@
                     </svg><span style="text-transform:uppercase">{{ __('trans.services_management') }}</span></div>
             </li>
             <li class="menu">
-                <a href="/modern-dark-menu/services" class="dropdown-toggle">
+                <a href="/products" class="dropdown-toggle">
                     <div class="">
                         <i class="fab fa-servicestack"></i>
-                        <span class="ml-1">{{ __('trans.services_table') }}</span>
+                        <span class="ml-1">{{ __('trans.products') }}</span>
+                    </div>
+                </a>
+            </li>
+            <li class="menu">
+                <a href="/customers" class="dropdown-toggle">
+                    <div class="">
+                        <i class="fab fa-servicestack"></i>
+                        <span class="ml-1">{{ __('trans.customers') }}</span>
+                    </div>
+                </a>
+            </li>
+            <li class="menu">
+                <a href="/orders" class="dropdown-toggle">
+                    <div class="">
+                        <i class="fab fa-servicestack"></i>
+                        <span class="ml-1">{{ __('trans.orders') }}</span>
+                    </div>
+                </a>
+            </li>
+            <li class="menu">
+                <a href="/users" class="dropdown-toggle">
+                    <div class="">
+                        <i class="fab fa-servicestack"></i>
+                        <span class="ml-1">{{ __('trans.users') }}</span>
+                    </div>
+                </a>
+            </li>
+            <li class="menu">
+                <a href="/payments" class="dropdown-toggle">
+                    <div class="">
+                        <i class="fab fa-servicestack"></i>
+                        <span class="ml-1">{{ __('trans.payments') }}</span>
+                    </div>
+                </a>
+            </li>
+            <li class="menu">
+                <a href="/carts" class="dropdown-toggle">
+                    <div class="">
+                        <i class="fab fa-servicestack"></i>
+                        <span class="ml-1">{{ __('trans.carts') }}</span>
                     </div>
                 </a>
             </li>

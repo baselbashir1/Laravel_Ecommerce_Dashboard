@@ -3,18 +3,23 @@
 return [
 
     'dashboard' => 'Dashboard',
-    'services_table' => 'Services Table',
+    'products' => 'Products',
+    'customers' => 'Customers',
+    'orders' => 'Orders',
+    'users' => 'Users',
+    'payments' => 'Payments',
+    'carts' => 'Carts',
 
     'add_image' => 'Add Image',
-    'service_images' => 'Service Images',
-    'add_service' => 'Add Service',
+    'product_images' => 'Product Images',
+    'add_product' => 'Add Product',
 
-    'services_management' => 'Services Management',
+    'services_management' => 'testttttt',
 
-    'add_new_service' => 'Add New Service',
-    'update_service_details' => 'Update Service Details',
-    'upload_service_images' => 'Upload Service Images',
-    'upload_service_image' => 'Upload Service Image',
+    'add_new_product' => 'Add New Product',
+    'update_product_details' => 'Update Product Details',
+    'upload_product_images' => 'Upload Product Images',
+    'upload_product_image' => 'Upload Product Image',
     'view' => 'View',
     'edit' => 'Edit',
     'delete' => 'Delete',
@@ -23,12 +28,11 @@ return [
     'delete_image' => 'Delete Image',
     'action' => 'Action',
 
-    'service_title' => 'Service Title',
-    'service_picture' => 'Service Picture',
-    'service_content' => 'Service Content',
-
-    'services' => 'Services',
-    'users' => 'Users',
+    'product_title' => 'Product Title',
+    'product_image' => 'Product Image',
+    'product_description' => 'Product Description',
+    'product_price' => 'Product Price',
+    'product_published' => 'Product Published',
 
     'profile' => 'Profile',
 
@@ -38,7 +42,7 @@ return [
     'search' => 'Search',
     'new' => 'NEW',
 
-    'no_services_found' => 'No Services Found',
+    'no_products_found' => 'No Products Found',
     'no_images_found' => 'No Images Found',
 
     'sign_in' => 'Sign In',

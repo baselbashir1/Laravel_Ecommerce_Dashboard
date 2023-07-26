@@ -56,7 +56,7 @@
                 <a href="/products" class="dropdown-toggle">
                     <div class="">
                         <i class="fab fa-servicestack"></i>
-                        <span class="ml-1">Products</span>
+                        <span class="ml-1">{{ __('trans.products') }}</span>
                     </div>
                 </a>
             </li>
@@ -64,7 +64,7 @@
                 <a href="/customers" class="dropdown-toggle">
                     <div class="">
                         <i class="fab fa-servicestack"></i>
-                        <span class="ml-1">Customers</span>
+                        <span class="ml-1">{{ __('trans.customers') }}</span>
                     </div>
                 </a>
             </li>
@@ -72,7 +72,7 @@
                 <a href="/orders" class="dropdown-toggle">
                     <div class="">
                         <i class="fab fa-servicestack"></i>
-                        <span class="ml-1">Orders</span>
+                        <span class="ml-1">{{ __('trans.orders') }}</span>
                     </div>
                 </a>
             </li>
@@ -80,7 +80,7 @@
                 <a href="/users" class="dropdown-toggle">
                     <div class="">
                         <i class="fab fa-servicestack"></i>
-                        <span class="ml-1">Users</span>
+                        <span class="ml-1">{{ __('trans.users') }}</span>
                     </div>
                 </a>
             </li>
@@ -88,7 +88,7 @@
                 <a href="/payments" class="dropdown-toggle">
                     <div class="">
                         <i class="fab fa-servicestack"></i>
-                        <span class="ml-1">Payments</span>
+                        <span class="ml-1">{{ __('trans.payments') }}</span>
                     </div>
                 </a>
             </li>
@@ -96,7 +96,7 @@
                 <a href="/carts" class="dropdown-toggle">
                     <div class="">
                         <i class="fab fa-servicestack"></i>
-                        <span class="ml-1">Carts</span>
+                        <span class="ml-1">{{ __('trans.carts') }}</span>
                     </div>
                 </a>
             </li>
