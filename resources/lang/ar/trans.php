@@ -11,10 +11,10 @@ return [
     'carts' => 'السلل',
 
     'add_image' => 'إضافة صورة',
+    'edit_product' => 'تعديل المنتج',
+    'add_new_image' => 'إضافة صورة جديدة',
     'product_images' => 'صور المنتج',
     'add_product' => 'إضافة منتج',
-
-    'services_management' => 'testttttt',
 
     'add_new_product' => 'إضافة منتج جديد',
     'update_product_details' => 'تعديل تفاصيل المنتج',
@@ -33,6 +33,7 @@ return [
     'product_description' => 'وصف المنتج',
     'product_price' => 'سعر المنتج',
     'product_published' => 'تم نشر المنتج',
+    'publish' => 'نشر',
 
     'profile' => 'الملف الشخصي',
 

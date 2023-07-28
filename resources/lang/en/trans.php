@@ -11,10 +11,10 @@ return [
     'carts' => 'Carts',
 
     'add_image' => 'Add Image',
+    'edit_product' => 'Edit Product',
+    'add_new_image' => 'Add New Image',
     'product_images' => 'Product Images',
     'add_product' => 'Add Product',
-
-    'services_management' => 'testttttt',
 
     'add_new_product' => 'Add New Product',
     'update_product_details' => 'Update Product Details',
@@ -33,6 +33,7 @@ return [
     'product_description' => 'Product Description',
     'product_price' => 'Product Price',
     'product_published' => 'Product Published',
+    'publish' => 'Publish',
 
     'profile' => 'Profile',
 

@@ -36,7 +36,7 @@
                                 <div class="col-sm-12">
                                     <div class="row">
                                         <label for="image"><i class="fas fa-image"></i>
-                                            {{ __('trans.service_picture') }}</label>
+                                            {{ __('trans.product_image') }}</label>
                                         <div class="text-center">
                                             <img src="{{ $product->image? app('firebase.storage')->getBucket()->object('Images/' . $product->image)->signedUrl(new DateTime('9999-01-01')): asset('no-image.png') }}"
                                                 class="card-img-top" alt="..."
@@ -52,36 +52,37 @@
                             <div class="row mb-4">
                                 <div class="col-sm-12">
                                     <label for="title"><i class="fab fa-servicestack"></i>
-                                        {{ __('trans.service_title') }}</label>
-                                    <input type="text" name="title" class="form-control" id="inputEmail3"
-                                        placeholder="{{ __('trans.service_title') }}" value="{{ $product->title }}">
+                                        {{ __('trans.product_title') }}</label>
+                                    <input type="text" name="title" class="form-control"
+                                        placeholder="{{ __('trans.product_title') }}" value="{{ $product->title }}">
                                 </div>
                             </div>
                             <div class="row mb-4">
                                 <div class="col-sm-12">
                                     <label for="price"><i class="fab fa-servicestack"></i>
-                                        Price</label>
-                                    <input type="number" name="price" class="form-control" id="inputEmail3"
-                                        placeholder="price" value="{{ $product->price }}">
+                                        {{ __('trans.product_price') }}</label>
+                                    <input type="number" name="price" class="form-control"
+                                        placeholder="{{ __('trans.product_price') }}" value="{{ $product->price }}">
                                 </div>
                             </div>
                             <div class="row mb-4">
                                 <div class="col-sm-12">
                                     <label for="description"><i class="fas fa-book-open"></i>
-                                        description</label>
-                                    <textarea name="description" cols="30" rows="10" class="form-control" placeholder="description">{{ $product->description }}</textarea>
+                                        {{ __('trans.product_description') }}</label>
+                                    <textarea name="description" cols="30" rows="10" class="form-control"
+                                        placeholder="{{ __('trans.product_description') }}">{{ $product->description }}</textarea>
                                 </div>
                             </div>
                             <div class="row mb-4">
                                 <div class="col-sm-12">
                                     <label for="published"><i class="fas fa-book-open"></i>
-                                        publish</label>
+                                        {{ __('trans.publish') }}</label>
                                     <input type="checkbox" name="published" class="form-control" />
                                 </div>
                             </div>
                             <div class="container">
                                 <button type="submit" class="btn btn-success w-100">
-                                    <i class="far fa-edit"></i> {{ __('trans.update_service_details') }}
+                                    <i class="far fa-edit"></i> {{ __('trans.update_product_details') }}
                                 </button>
                             </div>
                         </div>
@@ -90,7 +91,7 @@
             </div>
             @if (count($productImages) > 0)
                 <div class="row mb-4 layout-spacing layout-top-spacing">
-                    <h3>Product Images</h3>
+                    <h3>{{ __('trans.product_images') }}</h3>
                     @foreach ($productImages as $productImage)
                         <div class="col-xxl-9 col-xl-12 col-lg-12 col-md-12 col-sm-12 mt-4">
                             <div class="widget-content widget-content-area ecommerce-create-section">
@@ -133,7 +134,7 @@
                     @endforeach
                 </div>
                 <div class="row mb-4 layout-spacing layout-top-spacing">
-                    <h3><i class="fas fa-image"></i> Add new image</h3>
+                    <h3><i class="fas fa-image"></i> {{ __('trans.add_new_image') }}</h3>
                     <div class="col-xxl-9 col-xl-12 col-lg-12 col-md-12 col-sm-12 mt-4">
                         <div class="widget-content widget-content-area ecommerce-create-section">
                             <form method="POST" action="/edit-product/{{ $product->id }}/add-product-image"
@@ -144,7 +145,7 @@
                                 </div>
                                 <div class="container">
                                     <button type="submit" class="btn btn-primary w-100">
-                                        <i class="far fa-edit"></i> Add Image
+                                        <i class="far fa-edit"></i> {{ __('trans.add_image') }}
                                     </button>
                                 </div>
                             </form>

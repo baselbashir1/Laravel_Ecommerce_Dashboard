@@ -26,6 +26,7 @@ class ProductFactory extends Factory
         return [
             'title' => 'HyperX - ' . fake()->text(100),
             'image' => $imageUrl,
+            // 'image' => fake()->imageUrl(),
             'description' => fake()->realText(200),
             'price' => fake()->randomFloat(2, 50, 500),
             'published' => 1,

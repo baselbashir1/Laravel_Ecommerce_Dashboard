@@ -35,9 +35,9 @@
                             <div class="row mb-4">
                                 <div class="col-sm-12">
                                     <label for="title"><i class="fab fa-servicestack"></i>
-                                        {{ __('trans.service_title') }}</label>
-                                    <input type="text" name="title" class="form-control" id="inputEmail3"
-                                        placeholder="{{ __('trans.service_title') }}">
+                                        {{ __('trans.product_title') }}</label>
+                                    <input type="text" name="title" class="form-control"
+                                        placeholder="{{ __('trans.product_title') }}">
                                 </div>
                                 @error('title')
                                     <p class="mt-2">{{ $message }}</p>
@@ -46,9 +46,8 @@
                             <div class="row mb-4">
                                 <div class="col-sm-12">
                                     <label for="image"><i class="fas fa-image"></i>
-                                        {{ __('trans.service_picture') }}</label>
-                                    <input type="file" name="image" class="form-control" id="inputEmail3"
-                                        placeholder="Service Picture">
+                                        {{ __('trans.product_image') }}</label>
+                                    <input type="file" name="image" class="form-control">
                                 </div>
                                 @error('image')
                                     <p class="mt-2">{{ $message }}</p>
@@ -56,10 +55,10 @@
                             </div>
                             <div class="row mb-4">
                                 <div class="col-sm-12">
-                                    <label for="title"><i class="fab fa-servicestack"></i>
-                                        Price</label>
-                                    <input type="number" name="price" class="form-control" id="inputEmail3"
-                                        placeholder="price">
+                                    <label for="price"><i class="fab fa-servicestack"></i>
+                                        {{ __('trans.product_price') }}</label>
+                                    <input type="number" name="price" class="form-control"
+                                        placeholder="{{ __('trans.product_price') }}">
                                 </div>
                                 @error('price')
                                     <p class="mt-2">{{ $message }}</p>
@@ -68,9 +67,9 @@
                             <div class="row mb-4">
                                 <div class="col-sm-12">
                                     <label for="description"><i class="fas fa-book-open"></i>
-                                        {{ __('trans.service_content') }}</label>
+                                        {{ __('trans.product_description') }}</label>
                                     <textarea name="description" cols="30" rows="10" class="form-control"
-                                        placeholder="{{ __('trans.service_content') }}"></textarea>
+                                        placeholder="{{ __('trans.product_description') }}"></textarea>
                                 </div>
                                 @error('description')
                                     <p class="mt-2">{{ $message }}</p>
@@ -79,17 +78,17 @@
                             <div class="row mb-4">
                                 <div class="col-sm-12">
                                     <label for="published"><i class="fas fa-book-open"></i>
-                                        publish</label>
+                                        {{ __('trans.product_published') }}</label>
                                     <input type="checkbox" name="published" />
                                 </div>
-                                @error('content')
+                                @error('published')
                                     <p class="mt-2">{{ $message }}</p>
                                 @enderror
                             </div>
                             <div class="row mb-4">
                                 <div class="col-sm-12">
                                     <label for="product_image"><i class="fas fa-images"></i>
-                                        Upload Product Image
+                                        {{ __('trans.upload_product_image') }}
                                     </label>
                                     <input type="file" name="product_image" class="form-control">
                                 </div>
@@ -100,7 +99,8 @@
                             <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 mt-4">
                                 <div class="widget-content widget-content-area ecommerce-create-section">
                                     <div class="col-sm-12">
-                                        <button type="submit" class="btn btn-success w-100">Add Product</button>
+                                        <button type="submit"
+                                            class="btn btn-success w-100">{{ __('trans.add_product') }}</button>
                                     </div>
                                 </div>
                             </div>
