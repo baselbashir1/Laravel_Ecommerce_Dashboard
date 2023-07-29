@@ -23,6 +23,7 @@ return [
 
     'add_new_product' => 'إضافة منتج جديد',
     'update_product_details' => 'تعديل تفاصيل المنتج',
+    'product_details' => 'تفاصيل المنتج',
     'upload_product_images' => 'تحميل صور المنتج',
     'upload_product_image' => 'تحميل صورة المنتج',
     'view' => 'عرض',

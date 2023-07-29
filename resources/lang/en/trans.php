@@ -23,6 +23,7 @@ return [
 
     'add_new_product' => 'Add New Product',
     'update_product_details' => 'Update Product Details',
+    'product_details' => 'Product Details',
     'upload_product_images' => 'Upload Product Images',
     'upload_product_image' => 'Upload Product Image',
     'view' => 'View',

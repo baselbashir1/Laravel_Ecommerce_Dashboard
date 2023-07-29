@@ -24,7 +24,8 @@ class ProductController extends Controller
         $product = Product::where('id', $id)->first();
         $productImages = ProductImage::where('product_id', $product->id)->get();
 
-        return view('pages.app.ecommerce.detail', ['title' => 'Product Details'], ['product' => $product, 'productImages' => $productImages]);
+        if (app()->getLocale() == 'en') return view('pages.app.ecommerce.detail', ['title' => __('trans.product_details')], ['product' => $product, 'productImages' => $productImages]);
+        if (app()->getLocale() == 'ar') return view('pages-rtl.app.ecommerce.detail', ['title' => __('trans.product_details')], ['product' => $product, 'productImages' => $productImages]);
     }
 
     public function create()

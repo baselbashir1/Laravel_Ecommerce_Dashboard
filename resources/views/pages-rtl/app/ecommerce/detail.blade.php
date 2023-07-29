@@ -28,15 +28,26 @@
                         <div class="row justify-content-center">
                             <div class="col-xxl-5 col-xl-6 col-lg-7 col-md-7 col-sm-9 col-12 pe-3">
                                 <!-- Swiper -->
+                                <div class="product-details-content text-center">
+                                    <h3 class="product-title mb-4"><i class="fas fa-images"></i>
+                                        {{ __('trans.product_images') }}</h3>
+                                </div>
                                 <div id="main-slider" class="splide">
                                     <div class="splide__track">
                                         <ul class="splide__list">
-                                            @foreach ($serviceImages as $serviceImage)
+                                            <li class="splide__slide">
+                                                <a href="{{ app('firebase.storage')->getBucket()->object('Images/' . $product->image)->signedUrl(new DateTime('9999-01-01')) }}"
+                                                    class="glightbox">
+                                                    <img alt="ecommerce" style="width: 500px"
+                                                        src="{{ app('firebase.storage')->getBucket()->object('Images/' . $product->image)->signedUrl(new DateTime('9999-01-01')) }}">
+                                                </a>
+                                            </li>
+                                            @foreach ($productImages as $productImage)
                                                 <li class="splide__slide">
-                                                    <a href="{{ $serviceImage->image ? asset('storage/' . $serviceImage->image) : asset('no-image.png') }}"
+                                                    <a href="{{ app('firebase.storage')->getBucket()->object('Product Images/' . $productImage->image)->signedUrl(new DateTime('9999-01-01')) }}"
                                                         class="glightbox">
-                                                        <img alt="ecommerce"
-                                                            src="{{ $serviceImage->image ? asset('storage/' . $serviceImage->image) : asset('no-image.png') }}">
+                                                        <img alt="ecommerce" style="width: 500px"
+                                                            src="{{ app('firebase.storage')->getBucket()->object('Product Images/' . $productImage->image)->signedUrl(new DateTime('9999-01-01')) }}">
                                                     </a>
                                                 </li>
                                             @endforeach
@@ -46,9 +57,12 @@
                                 <div id="thumbnail-slider" class="splide">
                                     <div class="splide__track">
                                         <ul class="splide__list">
-                                            @foreach ($serviceImages as $serviceImage)
+                                            <li class="splide__slide"><img alt="ecommerce"
+                                                    src="{{ app('firebase.storage')->getBucket()->object('Images/' . $product->image)->signedUrl(new DateTime('9999-01-01')) }}">
+                                            </li>
+                                            @foreach ($productImages as $productImage)
                                                 <li class="splide__slide"><img alt="ecommerce"
-                                                        src="{{ $serviceImage->image ? asset('storage/' . $serviceImage->image) : asset('no-image.png') }}">
+                                                        src="{{ app('firebase.storage')->getBucket()->object('Product Images/' . $productImage->image)->signedUrl(new DateTime('9999-01-01')) }}">
                                                 </li>
                                             @endforeach
                                         </ul>
@@ -58,29 +72,19 @@
                             <div
                                 class="col-xxl-4 col-xl-5 col-lg-12 col-md-12 col-12 mt-xl-0 mt-5 align-self-center text-center">
                                 <div class="product-details-content">
-                                    <h3 class="product-title mb-0"><i class="fab fa-servicestack"></i>
-                                        {{ $service->title }}</h3>
-                                    <hr class="mb-4">
-                                    <div class="container">
-                                        <p style="font-size: 20px"><i class="fas fa-book-open"></i>
-                                            {{ $service->content }}</p>
-                                    </div>
-                                    <hr class="mb-5 mt-4">
-                                    <h4><i class="fas fa-image"></i> {{ __('trans.add_image') }}</h4>
-                                    <form action="/modern-dark-menu/detail/{{ $service->id }}/add-service-image"
-                                        method="POST" enctype="multipart/form-data">
-                                        @csrf
-                                        <div class="col-xxl-12 col-xl-12 col-sm-12 mb-sm-0 mb-3 mt-3">
-                                            <div class="row mb-4">
-                                                <div class="col-sm-12">
-                                                    <input type="file" name="img" class="form-control">
-                                                </div>
-                                            </div>
-                                            <button type="submit" class="btn btn-primary w-100 btn-lg">
-                                                <span class="btn-text-inner">{{ __('trans.submit') }}</span>
-                                            </button>
-                                        </div>
-                                    </form>
+                                    <hr class="mb-6">
+                                    <h3 class="product-title mb-4"><i class="fas fa-pen"></i>
+                                        {{ __('trans.product_title') }}</h3>
+                                    <h5>{{ $product->title }}</h5>
+                                    <hr class="mb-6">
+                                    <h3 class="product-title mb-4"><i class="fas fa-book-open"></i>
+                                        {{ __('trans.product_description') }}</h3>
+                                    <h5>{{ $product->description }}</h5>
+                                    <hr class="mb-6">
+                                    <h3 class="product-title mb-4"><i class="far fa-money-bill-alt"></i>
+                                        {{ __('trans.product_price') }}</h3>
+                                    <h5>{{ $product->price }} $</h5>
+                                    <hr class="mb-6">
                                 </div>
                             </div>
                         </div>
