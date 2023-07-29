@@ -23,8 +23,7 @@
             <div class="row layout-top-spacing">
                 <div class="col-xl-12 col-lg-6">
                     <a href="/product/add" class="btn btn-primary w-100 btn-lg mb-4">
-                        <span class="btn-text-inner"><i class="fab fa-servicestack"></i>
-                            {{ __('trans.add_new_product') }}</span>
+                        <span class="btn-text-inner">{{ __('trans.add_new_product') }}</span>
                     </a>
                 </div>
             </div>
@@ -35,9 +34,9 @@
                         <table id="ecommerce-list" class="table dt-table-hover" style="width:100%">
                             <thead>
                                 <tr>
-                                    <th><i class="fab fa-servicestack"></i> {{ __('trans.product_title') }}</th>
+                                    <th><i class="fas fa-pen"></i> {{ __('trans.product_title') }}</th>
                                     <th><i class="fas fa-image"></i> {{ __('trans.product_image') }}</th>
-                                    <th><i class="fas fa-book-open"></i> {{ __('trans.product_price') }}</th>
+                                    <th><i class="far fa-money-bill-alt"></i> {{ __('trans.product_price') }}</th>
                                     <th><i class="fas fa-book-open"></i> {{ __('trans.product_description') }}</th>
                                     <th class="no-content text-center"><i class="fas fa-recycle"></i>
                                         {{ __('trans.action') }}</th>

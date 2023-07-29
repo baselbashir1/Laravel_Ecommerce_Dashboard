@@ -48,7 +48,7 @@
             <li class="menu">
                 <a href="/products" class="dropdown-toggle">
                     <div class="">
-                        <i class="fab fa-servicestack"></i>
+                        <i class="fas fa-shopping-bag"></i>
                         <span class="ml-1">{{ __('trans.products') }}</span>
                     </div>
                 </a>
@@ -56,7 +56,7 @@
             <li class="menu">
                 <a href="/customers" class="dropdown-toggle">
                     <div class="">
-                        <i class="fab fa-servicestack"></i>
+                        <i class="fas fa-people-carry"></i>
                         <span class="ml-1">{{ __('trans.customers') }}</span>
                     </div>
                 </a>
@@ -64,7 +64,7 @@
             <li class="menu">
                 <a href="/orders" class="dropdown-toggle">
                     <div class="">
-                        <i class="fab fa-servicestack"></i>
+                        <i class="fas fa-clipboard-list"></i>
                         <span class="ml-1">{{ __('trans.orders') }}</span>
                     </div>
                 </a>
@@ -72,7 +72,7 @@
             <li class="menu">
                 <a href="/users" class="dropdown-toggle">
                     <div class="">
-                        <i class="fab fa-servicestack"></i>
+                        <i class="fas fa-users"></i>
                         <span class="ml-1">{{ __('trans.users') }}</span>
                     </div>
                 </a>
@@ -80,7 +80,7 @@
             <li class="menu">
                 <a href="/payments" class="dropdown-toggle">
                     <div class="">
-                        <i class="fab fa-servicestack"></i>
+                        <i class="fab fa-paypal"></i>
                         <span class="ml-1">{{ __('trans.payments') }}</span>
                     </div>
                 </a>
@@ -88,7 +88,7 @@
             <li class="menu">
                 <a href="/carts" class="dropdown-toggle">
                     <div class="">
-                        <i class="fab fa-servicestack"></i>
+                        <i class="fas fa-shopping-cart"></i>
                         <span class="ml-1">{{ __('trans.carts') }}</span>
                     </div>
                 </a>

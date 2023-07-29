@@ -26,19 +26,16 @@
                         <table id="ecommerce-list" class="table dt-table-hover" style="width:100%">
                             <thead>
                                 <tr>
-                                    <th><i class="fab fa-servicestack"></i> #</th>
-                                    <th><i class="fas fa-image"></i> User</th>
-                                    <th><i class="fas fa-book-open"></i> product</th>
-                                    <th><i class="fas fa-book-open"></i> quantity</th>
-                                    <th class="no-content text-center"><i class="fas fa-recycle"></i>
-                                        {{ __('trans.action') }}</th>
+                                    <th>User cart</th>
+                                    <th>product</th>
+                                    <th>quantity</th>
+                                    <th class="no-content text-center">{{ __('trans.action') }}</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @unless (count((array) $cartItems) == 0)
                                     @foreach ($cartItems as $cartItem)
                                         <tr>
-                                            <td>{{ $cartItem->id }}</td>
                                             <td>{{ $cartItem->user->name }}</td>
                                             <td>{{ $cartItem->product->title }}</td>
                                             <td>{{ $cartItem->quantity }}</td>

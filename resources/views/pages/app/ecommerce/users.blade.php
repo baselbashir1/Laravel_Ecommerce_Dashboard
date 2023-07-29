@@ -35,21 +35,18 @@
                         <table id="ecommerce-list" class="table dt-table-hover" style="width:100%">
                             <thead>
                                 <tr>
-                                    <th><i class="fab fa-servicestack"></i> #</th>
-                                    <th><i class="fas fa-image"></i> name</th>
-                                    <th><i class="fas fa-book-open"></i> email</th>
-                                    <th><i class="fas fa-book-open"></i> password</th>
-                                    <th><i class="fas fa-book-open"></i> role</th>
-                                    <th><i class="fas fa-book-open"></i> created at</th>
-                                    <th class="no-content text-center"><i class="fas fa-recycle"></i>
-                                        {{ __('trans.action') }}</th>
+                                    <th>name</th>
+                                    <th>email</th>
+                                    <th>password</th>
+                                    <th>role</th>
+                                    <th>created at</th>
+                                    <th class="no-content text-center">{{ __('trans.action') }}</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @unless (count((array) $users) == 0)
                                     @foreach ($users as $user)
                                         <tr>
-                                            <td>{{ $user->id }}</td>
                                             <td>{{ $user->name }}</td>
                                             <td>{{ $user->email }}</td>
                                             <td>{{ substr($user->password, 0, 10) }}</td>

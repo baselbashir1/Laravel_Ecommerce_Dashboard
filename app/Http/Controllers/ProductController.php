@@ -39,7 +39,6 @@ class ProductController extends Controller
             'title' => 'required|unique:products,title',
             'image' => 'required',
             'price' => 'required',
-            'product_image' => 'required',
             'description' => 'required'
         ]);
 
@@ -49,20 +48,6 @@ class ProductController extends Controller
             $name = $formFields['image']->id();
             $localfolder = public_path('firebase-temp-uploads') . '/';
             $image = $request['image'];
-            $file = $name;
-            if ($image->move($localfolder, $file)) {
-                $uploadedfile = fopen($localfolder . $file, 'r');
-                app('firebase.storage')->getBucket()->upload($uploadedfile, ['name' => $firebase_storage_path . $file]);
-                unlink($localfolder . $file);
-            }
-        }
-
-        if ($request->hasFile('product_image')) {
-            $formFields['product_image'] = app('firebase.firestore')->database()->collection('Product Images')->document($_FILES['product_image']['name']);
-            $firebase_storage_path = 'Product Images/';
-            $name = $formFields['product_image']->id();
-            $localfolder = public_path('firebase-temp-uploads') . '/';
-            $image = $request['product_image'];
             $file = $name;
             if ($image->move($localfolder, $file)) {
                 $uploadedfile = fopen($localfolder . $file, 'r');
@@ -81,12 +66,26 @@ class ProductController extends Controller
             'updated_by' => auth()->user()->id
         ]);
 
-        $product_id = Product::latest()->first()->id;
+        if ($request->hasFile('product_image')) {
+            $formFields['product_image'] = app('firebase.firestore')->database()->collection('Product Images')->document($_FILES['product_image']['name']);
+            $firebase_storage_path = 'Product Images/';
+            $name = $formFields['product_image']->id();
+            $localfolder = public_path('firebase-temp-uploads') . '/';
+            $image = $request['product_image'];
+            $file = $name;
 
-        ProductImage::create([
-            'image' => $formFields['product_image']->id(),
-            'product_id' => $product_id
-        ]);
+            if ($image->move($localfolder, $file)) {
+                $uploadedfile = fopen($localfolder . $file, 'r');
+                app('firebase.storage')->getBucket()->upload($uploadedfile, ['name' => $firebase_storage_path . $file]);
+                unlink($localfolder . $file);
+            }
+
+            $product_id = Product::latest()->first()->id;
+            ProductImage::create([
+                'image' => $formFields['product_image']->id(),
+                'product_id' => $product_id
+            ]);
+        }
 
         return redirect('/products');
     }

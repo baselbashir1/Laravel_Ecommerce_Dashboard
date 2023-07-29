@@ -34,7 +34,7 @@
                         <div class="widget-content widget-content-area ecommerce-create-section">
                             <div class="row mb-4">
                                 <div class="col-sm-12">
-                                    <label for="title"><i class="fab fa-servicestack"></i>
+                                    <label for="title"><i class="fas fa-pen"></i>
                                         {{ __('trans.product_title') }}</label>
                                     <input type="text" name="title" class="form-control"
                                         placeholder="{{ __('trans.product_title') }}">
@@ -55,7 +55,7 @@
                             </div>
                             <div class="row mb-4">
                                 <div class="col-sm-12">
-                                    <label for="price"><i class="fab fa-servicestack"></i>
+                                    <label for="price"><i class="far fa-money-bill-alt"></i>
                                         {{ __('trans.product_price') }}</label>
                                     <input type="number" name="price" class="form-control"
                                         placeholder="{{ __('trans.product_price') }}">
@@ -77,8 +77,8 @@
                             </div>
                             <div class="row mb-4">
                                 <div class="col-sm-12">
-                                    <label for="published"><i class="fas fa-book-open"></i>
-                                        {{ __('trans.product_published') }}</label>
+                                    <label for="published"><i class="fas fa-rocket"></i>
+                                        {{ __('trans.publish') }}</label>
                                     <input type="checkbox" name="published" />
                                 </div>
                                 @error('published')

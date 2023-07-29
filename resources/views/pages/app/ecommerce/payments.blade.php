@@ -35,20 +35,16 @@
                         <table id="ecommerce-list" class="table dt-table-hover" style="width:100%">
                             <thead>
                                 <tr>
-                                    <th><i class="fab fa-servicestack"></i> #</th>
-                                    <th><i class="fas fa-book-open"></i> amount</th>
-                                    <th><i class="fas fa-book-open"></i> status</th>
-                                    <th><i class="fas fa-book-open"></i> type</th>
-                                    <th><i class="fas fa-book-open"></i> created by</th>
-                                    {{-- <th class="no-content text-center"><i class="fas fa-recycle"></i>
-                                        {{ __('trans.action') }}</th> --}}
+                                    <th>amount</th>
+                                    <th>status</th>
+                                    <th>type</th>
+                                    <th>created by</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @unless (count((array) $payments) == 0)
                                     @foreach ($payments as $payment)
                                         <tr>
-                                            <td>{{ $payment->order_id }}</td>
                                             <td>{{ $payment->amount }}</td>
                                             <td>
                                                 @if ($payment->status == 'paid')
