@@ -83,7 +83,8 @@ class UserController extends Controller
 
     public function create()
     {
-        return view('pages.app.ecommerce.add-user', ['title' => 'Add User']);
+        if (app()->getLocale() == 'en') return view('pages.app.ecommerce.add-user', ['title' => __('trans.add_user')]);
+        if (app()->getLocale() == 'ar') return view('pages-rtl.app.ecommerce.add-user', ['title' => __('trans.add_user')]);
     }
 
     public function store(Request $request)

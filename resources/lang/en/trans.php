@@ -66,6 +66,7 @@ return [
     'terms_conditions' => 'Terms and Conditions',
 
     'add_new_user' => 'Add New User',
+    'add_user' => 'Add User',
     'name' => 'Name',
     'email' => 'Email',
     'password' => 'Password',

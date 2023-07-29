@@ -36,7 +36,7 @@
                                 <h3 class="">{{ __('trans.profile') }}</h3>
                             </div>
                             <div class="text-center user-info">
-                                <img src="{{ Vite::asset('resources/images/profile-3.jpeg') }}" alt="avatar">
+                                <img src="{{ Vite::asset('resources/images/drag-2.jpeg') }}" alt="avatar">
                                 <p>
                                     @auth
                                         {{ Auth::user()->name }}

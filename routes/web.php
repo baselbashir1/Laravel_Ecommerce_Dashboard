@@ -30,7 +30,6 @@ Route::group(
         'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath']
     ],
     function () {
-        // Route::prefix('modern-dark-menu')->group(function () {
         Route::middleware(['auth'])->group(function () {
             Route::get('/', [HomeController::class, 'index']);
             Route::get('/dashboard', [HomeController::class, 'index']);
@@ -64,25 +63,10 @@ Route::group(
             Route::get('/edit-cart/{id}', [CartController::class, 'edit']);
             Route::post('/edit-cart/{id}', [CartController::class, 'update']);
             Route::post('/delete-cart/{id}', [CartController::class, 'destroy']);
-            // Route::get('/product/edit/{product}', [ProductController::class, 'show']);
 
-            // Route::controller(ServiceController::class)->group(function () {
-            //     Route::get('/dashboard', 'index');
-            //     Route::get('/services', 'services');
-            //     Route::get('/detail/{service}', 'show');
-            //     Route::get('/add', 'create');
-            //     Route::post('/add-service', 'store');
-            //     Route::get('/edit/{service}', 'edit');
-            //     Route::post('/edit-service/{service}', 'update');
-            //     Route::post('/delete/{service}', 'destroy');
-            // });
-            // Route::controller(ServiceImageController::class)->group(function () {
-            //     Route::post('/detail/{service}/add-service-image', 'addImageService');
-            //     Route::post('/edit/{service}/edit-service-image/{serviceImage}', 'editImageService');
-            //     Route::post('/delete/{service}/delete-service-image/{serviceImage}', 'deleteImageService');
-            // });
             Route::get('/profile', [UserController::class, 'profile']);
         });
+
         Route::controller(UserController::class)->group(function () {
             Route::get('/sign-up', 'viewSignUp')->name('register');
             Route::post('/register', 'register');
@@ -90,6 +74,5 @@ Route::group(
             Route::post('/login', 'login');
             Route::post('/logout', 'logout');
         });
-        // });
     }
 );
