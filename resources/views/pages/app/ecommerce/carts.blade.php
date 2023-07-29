@@ -26,10 +26,11 @@
                         <table id="ecommerce-list" class="table dt-table-hover" style="width:100%">
                             <thead>
                                 <tr>
-                                    <th>User cart</th>
-                                    <th>product</th>
-                                    <th>quantity</th>
-                                    <th class="no-content text-center">{{ __('trans.action') }}</th>
+                                    <th><i class="fas fa-user-alt"></i> {{ __('trans.user') }}</th>
+                                    <th><i class="fas fa-headphones-alt"></i> {{ __('trans.product_title') }}</th>
+                                    <th><i class="fas fa-balance-scale"></i> {{ __('trans.amount') }}</th>
+                                    <th class="no-content text-center"><i class="fas fa-recycle"></i>
+                                        {{ __('trans.action') }}</th>
                                 </tr>
                             </thead>
                             <tbody>

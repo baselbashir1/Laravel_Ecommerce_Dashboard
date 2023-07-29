@@ -11,6 +11,7 @@ class PaymentController extends Controller
     {
         $payments = Payment::all();
 
-        return view('pages.app.ecommerce.payments', ['title' => 'Payments'], ['payments' => $payments]);
+        if (app()->getLocale() == 'en') return view('pages.app.ecommerce.payments', ['title' => __('trans.payments')], ['payments' => $payments]);
+        if (app()->getLocale() == 'ar') return view('pages-rtl.app.ecommerce.payments', ['title' => __('trans.payments')], ['payments' => $payments]);
     }
 }

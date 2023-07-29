@@ -18,9 +18,9 @@
             <div class="row">
                 <div class="col-xxl-2 col-xl-3 col-lg-3 col-md-4 col-sm-6 mb-4">
                     <a class="card style-6" href="/products">
-                        {{-- <span class="badge badge-primary"><i class="fas fa-star"></i> {{ __('trans.new') }}</span> --}}
+                        <span class="badge badge-primary"><i class="fas fa-star"></i> {{ __('trans.new') }}</span>
                         <img src="{{ asset('products.jpeg') }}" class="card-img-top" alt="..."
-                            style="width: 182px; height: 182px;">
+                            style="width: 100%; height: 100%">
                         <div class="card-footer">
                             <div class="row">
                                 <div class="container">
@@ -31,9 +31,8 @@
                         </div>
                     </a>
                 </div>
-                <div class="col-xxl-2 col-xl-3 col-lg-3 col-md-4 col-sm-6 mb-4">
+                {{-- <div class="col-xxl-2 col-xl-3 col-lg-3 col-md-4 col-sm-6 mb-4">
                     <a class="card style-6" href="/customers">
-                        {{-- <span class="badge badge-primary"><i class="fas fa-star"></i> {{ __('trans.new') }}</span> --}}
                         <img src="{{ asset('customers.jpeg') }}" class="card-img-top" alt="..."
                             style="width: 182px; height: 182px;">
                         <div class="card-footer">
@@ -45,12 +44,11 @@
                             </div>
                         </div>
                     </a>
-                </div>
+                </div> --}}
                 <div class="col-xxl-2 col-xl-3 col-lg-3 col-md-4 col-sm-6 mb-4">
                     <a class="card style-6" href="/orders">
-                        {{-- <span class="badge badge-primary"><i class="fas fa-star"></i> {{ __('trans.new') }}</span> --}}
                         <img src="{{ asset('orders.png') }}" class="card-img-top" alt="..."
-                            style="width: 182px; height: 182px;">
+                            style="width: 100%; height: 100%">
                         <div class="card-footer">
                             <div class="row">
                                 <div class="container">
@@ -63,9 +61,8 @@
                 </div>
                 <div class="col-xxl-2 col-xl-3 col-lg-3 col-md-4 col-sm-6 mb-4">
                     <a class="card style-6" href="/users">
-                        {{-- <span class="badge badge-primary"><i class="fas fa-star"></i> {{ __('trans.new') }}</span> --}}
                         <img src="{{ asset('users.png') }}" class="card-img-top" alt="..."
-                            style="width: 182px; height: 182px;">
+                            style="width: 100%; height: 100%">
                         <div class="card-footer">
                             <div class="row">
                                 <div class="container">
@@ -78,9 +75,8 @@
                 </div>
                 <div class="col-xxl-2 col-xl-3 col-lg-3 col-md-4 col-sm-6 mb-4">
                     <a class="card style-6" href="/payments">
-                        {{-- <span class="badge badge-primary"><i class="fas fa-star"></i> {{ __('trans.new') }}</span> --}}
                         <img src="{{ asset('payments.png') }}" class="card-img-top" alt="..."
-                            style="width: 182px; height: 182px;">
+                            style="width: 100%; height: 100%">
                         <div class="card-footer">
                             <div class="row">
                                 <div class="container">
@@ -93,9 +89,8 @@
                 </div>
                 <div class="col-xxl-2 col-xl-3 col-lg-3 col-md-4 col-sm-6 mb-4">
                     <a class="card style-6" href="/carts">
-                        {{-- <span class="badge badge-primary"><i class="fas fa-star"></i> {{ __('trans.new') }}</span> --}}
                         <img src="{{ asset('carts.jpg') }}" class="card-img-top" alt="..."
-                            style="width: 182px; height: 182px;">
+                            style="width: 100%; height: 100%">
                         <div class="card-footer">
                             <div class="row">
                                 <div class="container">
@@ -107,7 +102,6 @@
                     </a>
                 </div>
             </div>
-
             <!--  BEGIN CUSTOM SCRIPTS FILE  -->
             <x-slot:footerFiles>
 

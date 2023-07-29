@@ -12,7 +12,8 @@ class UserController extends Controller
     {
         $users = User::all();
 
-        return view('pages.app.ecommerce.users', ['title' => 'Users'], ['users' => $users]);
+        if (app()->getLocale() == 'en') return view('pages.app.ecommerce.users', ['title' => __('trans.users')], ['users' => $users]);
+        if (app()->getLocale() == 'ar') return view('pages-rtl.app.ecommerce.users', ['title' => __('trans.users')], ['users' => $users]);
     }
 
     public function viewSignUp()
@@ -103,7 +104,8 @@ class UserController extends Controller
     public function edit($id)
     {
         $user = User::where('id', $id)->first();
-        return view('pages.app.ecommerce.edit-user', ['title' => 'Edit User'], ['user' => $user]);
+        if (app()->getLocale() == 'en') return view('pages.app.ecommerce.edit-user', ['title' => __('trans.edit_user')], ['user' => $user]);
+        if (app()->getLocale() == 'ar') return view('pages-rtl.app.ecommerce.edit-user', ['title' => __('trans.edit_user')], ['user' => $user]);
     }
 
     public function update(Request $request, $id)

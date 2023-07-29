@@ -18,16 +18,6 @@
                 }
             </style>
             </x-slot>
-            <!-- END GLOBAL MANDATORY STYLES -->
-
-            {{-- <div class="row layout-top-spacing">
-                <div class="col-xl-12 col-lg-6">
-                    <a href="/product/add" class="btn btn-primary w-100 btn-lg mb-4">
-                        <span class="btn-text-inner"><i class="fab fa-servicestack"></i>
-                            Add New Product</span>
-                    </a>
-                </div>
-            </div> --}}
 
             <div class="row layout-top-spacing">
                 <div class="col-xl-12 col-lg-12 col-sm-12 layout-spacing">
@@ -35,10 +25,11 @@
                         <table id="ecommerce-list" class="table dt-table-hover" style="width:100%">
                             <thead>
                                 <tr>
-                                    <th>Total Price</th>
-                                    <th>Status</th>
-                                    <th>User</th>
-                                    <th class="no-content text-center">{{ __('trans.action') }}</th>
+                                    <th><i class="far fa-money-bill-alt"></i> {{ __('trans.total_price') }}</th>
+                                    <th><i class="fas fa-info-circle"></i> {{ __('trans.status') }}</th>
+                                    <th><i class="fas fa-user-alt"></i> {{ __('trans.user') }}</th>
+                                    <th class="no-content text-center"><i class="fas fa-recycle"></i>
+                                        {{ __('trans.action') }}</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -65,16 +56,7 @@
                                             <td class="text-center">
                                                 <div style="display: flex">
                                                     <a href="/order/{{ $order->id }}/details"
-                                                        class="btn btn-primary mt-2 mb-1">order details</a>
-                                                    {{-- <a href="" style="width: 50px; height: 40px"
-                                                        class="btn btn-success m-2"><i class="far fa-edit"></i></a> --}}
-                                                    {{-- <form method="POST" class="mt-2" action="">
-                                                        @csrf
-                                                        <button type="submit" class="btn btn-danger"
-                                                            style="width: 50px; height: 40px">
-                                                            <i class="far fa-trash-alt"></i>
-                                                        </button>
-                                                    </form> --}}
+                                                        class="btn btn-primary mt-2 mb-1">{{ __('trans.order_details') }}</a>
                                                 </div>
                                             </td>
                                         </tr>

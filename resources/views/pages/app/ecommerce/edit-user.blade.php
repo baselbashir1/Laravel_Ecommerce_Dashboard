@@ -32,65 +32,48 @@
                     @csrf
                     <div class="col-xxl-9 col-xl-12 col-lg-12 col-md-12 col-sm-12">
                         <div class="widget-content widget-content-area ecommerce-create-section">
-                            {{-- <div class="row mb-4">
-                                <div class="col-sm-12">
-                                    <div class="row">
-                                        <label for="image"><i class="fas fa-image"></i>
-                                            {{ __('trans.service_picture') }}</label>
-                                        <div class="text-center">
-                                            <img src="{{ $product->image? app('firebase.storage')->getBucket()->object('Images/' . $product->image)->signedUrl(new DateTime('9999-01-01')): asset('no-image.png') }}"
-                                                class="card-img-top" alt="..."
-                                                style="width: 250px; height: 250px;">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="container mt-2 mb-2">
-                                    <input type="file" name="image" class="form-control"
-                                        placeholder="Service Picture" value="{{ $product->image }}">
-                                </div>
-                            </div> --}}
                             <div class="row mb-4">
                                 <div class="col-sm-12">
-                                    <label for="name"><i class="fab fa-servicestack"></i>
-                                        Name</label>
+                                    <label for="name"><i class="fas fa-id-card"></i>
+                                        {{ __('trans.name') }}</label>
                                     <input type="text" name="name" class="form-control" placeholder="Name"
                                         value="{{ $user->name }}">
                                 </div>
                             </div>
                             <div class="row mb-4">
                                 <div class="col-sm-12">
-                                    <label for="email"><i class="fab fa-servicestack"></i>
-                                        Email</label>
+                                    <label for="email"><i class="fas fa-envelope"></i>
+                                        {{ __('trans.email') }}</label>
                                     <input type="email" name="email" class="form-control" placeholder="Email"
                                         value="{{ $user->email }}">
                                 </div>
                             </div>
                             <div class="row mb-4">
                                 <div class="col-sm-12">
-                                    <label for="password"><i class="fab fa-servicestack"></i>
-                                        password</label>
+                                    <label for="password"><i class="fas fa-lock"></i>
+                                        {{ __('trans.password') }}</label>
                                     <input type="password" name="password" class="form-control" placeholder="password"
                                         value="">
                                 </div>
                             </div>
                             <div class="row mb-4">
                                 <div class="col-sm-12">
-                                    <label for="is_admin"><i class="fas fa-book-open"></i>
-                                        Role</label>
+                                    <label for="is_admin"><i class="fas fa-gem"></i>
+                                        {{ __('trans.role') }}</label>
                                     <select name="is_admin" class="form-control">
                                         @if ($user->is_admin == 1)
-                                            <option value="0">normal user</option>
-                                            <option value="1" selected>admin</option>
+                                            <option value="0">{{ __('trans.normal_user') }}</option>
+                                            <option value="1" selected>{{ __('trans.admin') }}</option>
                                         @else
-                                            <option value="0" selected>normal user</option>
-                                            <option value="1">admin</option>
+                                            <option value="0" selected>{{ __('trans.normal_user') }}</option>
+                                            <option value="1">{{ __('trans.admin') }}</option>
                                         @endif
                                     </select>
                                 </div>
                             </div>
                             <div class="container">
                                 <button type="submit" class="btn btn-success w-100">
-                                    <i class="far fa-edit"></i> Update User
+                                    <i class="far fa-edit"></i> {{ __('trans.update_user') }}
                                 </button>
                             </div>
                         </div>

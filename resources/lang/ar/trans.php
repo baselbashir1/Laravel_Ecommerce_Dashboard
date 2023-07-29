@@ -8,13 +8,18 @@ return [
     'orders' => 'الطلبات',
     'users' => 'المستخدمين',
     'payments' => 'عمليات الشراء',
-    'carts' => 'السلل',
+    'carts' => 'السلات',
 
     'add_image' => 'إضافة صورة',
     'edit_product' => 'تعديل المنتج',
     'add_new_image' => 'إضافة صورة جديدة',
     'product_images' => 'صور المنتج',
     'add_product' => 'إضافة منتج',
+
+    'total_price' => 'السعر الاجمالي',
+    'status' => 'الحالة',
+    'user' => 'المستخدم',
+    'no_images' => 'لا يوجد صور لهذا المنتج',
 
     'add_new_product' => 'إضافة منتج جديد',
     'update_product_details' => 'تعديل تفاصيل المنتج',
@@ -58,6 +63,23 @@ return [
     'dont_have_account' => "ليس لديك حساب؟",
     'have_account' => 'هل لديك حساب ؟',
     'agree' => 'أوافق على',
-    'terms_conditions' => 'الأحكام والشروط'
+    'terms_conditions' => 'الأحكام والشروط',
+
+    'add_new_user' => 'إضافة مستخدم جديد',
+    'name' => 'الاسم',
+    'email' => 'البريد الالكتروني',
+    'password' => 'كلمة المرور',
+    'role' => 'الصلاحية',
+    'admin' => 'مسؤول',
+    'normal_user' => 'مستخدم عادي',
+    'update_user' => 'تحديث المستخدم',
+    'edit_user' => 'تعديل السمتخدم',
+    'amount' => 'الكمية',
+    'type' => 'النوع',
+    'update_cart' => 'تحديث السلة',
+    'edit_cart' => 'تعديل السلة',
+    'view_all_orders' => 'عرض جميع الطلبات',
+    'order_details' => 'تفاصيل الطلب',
+
 
 ];

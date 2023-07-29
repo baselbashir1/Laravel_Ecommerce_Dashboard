@@ -11,14 +11,16 @@ class CartController extends Controller
     public function index()
     {
         $cartItems = CartItem::all();
-        return view('pages.app.ecommerce.carts', ['title' => 'Carts'], ['cartItems' => $cartItems]);
+        if (app()->getLocale() == 'en') return view('pages.app.ecommerce.carts', ['title' => __('trans.carts')], ['cartItems' => $cartItems]);
+        if (app()->getLocale() == 'ar') return view('pages-rtl.app.ecommerce.carts', ['title' => __('trans.carts')], ['cartItems' => $cartItems]);
     }
 
     public function edit($id)
     {
         $cartItem = CartItem::where('id', $id)->first();
         $products = Product::all();
-        return view('pages.app.ecommerce.edit-cart', ['title' => 'Edit Cart'], ['cartItem' => $cartItem, 'products' => $products]);
+        if (app()->getLocale() == 'en') return view('pages.app.ecommerce.edit-cart', ['title' => __('trans.edit_cart')], ['cartItem' => $cartItem, 'products' => $products]);
+        if (app()->getLocale() == 'ar') return view('pages-rtl.app.ecommerce.edit-cart', ['title' => __('trans.edit_cart')], ['cartItem' => $cartItem, 'products' => $products]);
     }
 
     public function update(Request $request, $id)

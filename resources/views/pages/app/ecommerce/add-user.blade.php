@@ -34,7 +34,7 @@
                         <div class="widget-content widget-content-area ecommerce-create-section">
                             <div class="row mb-4">
                                 <div class="col-sm-12">
-                                    <label for="name"><i class="fab fa-servicestack"></i>
+                                    <label for="name"><i class="fas fa-id-card"></i>
                                         Name</label>
                                     <input type="text" name="name" class="form-control" placeholder="name">
                                 </div>
@@ -44,7 +44,7 @@
                             </div>
                             <div class="row mb-4">
                                 <div class="col-sm-12">
-                                    <label for="email"><i class="fab fa-servicestack"></i>
+                                    <label for="email"><i class="fas fa-envelope"></i>
                                         Email</label>
                                     <input type="email" name="email" class="form-control" placeholder="email">
                                 </div>
@@ -54,7 +54,7 @@
                             </div>
                             <div class="row mb-4">
                                 <div class="col-sm-12">
-                                    <label for="password"><i class="fab fa-servicestack"></i>
+                                    <label for="password"><i class="fas fa-lock"></i>
                                         Password</label>
                                     <input type="password" name="password" class="form-control" placeholder="password">
                                 </div>
@@ -64,7 +64,7 @@
                             </div>
                             <div class="row mb-4">
                                 <div class="col-sm-12">
-                                    <label for="is_admin"><i class="fas fa-book-open"></i>
+                                    <label for="is_admin"><i class="fas fa-gem"></i>
                                         Role</label>
                                     <select name="is_admin" class="form-control">
                                         <option selected disabled></option>

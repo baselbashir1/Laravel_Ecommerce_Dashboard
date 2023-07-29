@@ -28,81 +28,53 @@
             <!-- END GLOBAL MANDATORY STYLES -->
 
             <div class="row mb-4 layout-spacing layout-top-spacing">
-                <form method="POST" action="/add-product" enctype="multipart/form-data">
+                <form method="POST" action="/edit-user/{{ $user->id }}" enctype="multipart/form-data">
                     @csrf
                     <div class="col-xxl-9 col-xl-12 col-lg-12 col-md-12 col-sm-12">
                         <div class="widget-content widget-content-area ecommerce-create-section">
                             <div class="row mb-4">
                                 <div class="col-sm-12">
-                                    <label for="title"><i class="fas fa-pen"></i>
-                                        {{ __('trans.product_title') }}</label>
-                                    <input type="text" name="title" class="form-control"
-                                        placeholder="{{ __('trans.product_title') }}">
+                                    <label for="name"><i class="fas fa-id-card"></i>
+                                        {{ __('trans.name') }}</label>
+                                    <input type="text" name="name" class="form-control" placeholder="Name"
+                                        value="{{ $user->name }}">
                                 </div>
-                                @error('title')
-                                    <p class="mt-2">{{ $message }}</p>
-                                @enderror
                             </div>
                             <div class="row mb-4">
                                 <div class="col-sm-12">
-                                    <label for="image"><i class="fas fa-image"></i>
-                                        {{ __('trans.product_image') }}</label>
-                                    <input type="file" name="image" class="form-control">
+                                    <label for="email"><i class="fas fa-envelope"></i>
+                                        {{ __('trans.email') }}</label>
+                                    <input type="email" name="email" class="form-control" placeholder="Email"
+                                        value="{{ $user->email }}">
                                 </div>
-                                @error('image')
-                                    <p class="mt-2">{{ $message }}</p>
-                                @enderror
                             </div>
                             <div class="row mb-4">
                                 <div class="col-sm-12">
-                                    <label for="price"><i class="far fa-money-bill-alt"></i>
-                                        {{ __('trans.product_price') }}</label>
-                                    <input type="number" name="price" class="form-control"
-                                        placeholder="{{ __('trans.product_price') }}">
+                                    <label for="password"><i class="fas fa-lock"></i>
+                                        {{ __('trans.password') }}</label>
+                                    <input type="password" name="password" class="form-control" placeholder="password"
+                                        value="">
                                 </div>
-                                @error('price')
-                                    <p class="mt-2">{{ $message }}</p>
-                                @enderror
                             </div>
                             <div class="row mb-4">
                                 <div class="col-sm-12">
-                                    <label for="description"><i class="fas fa-book-open"></i>
-                                        {{ __('trans.product_description') }}</label>
-                                    <textarea name="description" cols="30" rows="10" class="form-control"
-                                        placeholder="{{ __('trans.product_description') }}"></textarea>
+                                    <label for="is_admin"><i class="fas fa-gem"></i>
+                                        {{ __('trans.role') }}</label>
+                                    <select name="is_admin" class="form-control">
+                                        @if ($user->is_admin == 1)
+                                            <option value="0">{{ __('trans.normal_user') }}</option>
+                                            <option value="1" selected>{{ __('trans.admin') }}</option>
+                                        @else
+                                            <option value="0" selected>{{ __('trans.normal_user') }}</option>
+                                            <option value="1">{{ __('trans.admin') }}</option>
+                                        @endif
+                                    </select>
                                 </div>
-                                @error('description')
-                                    <p class="mt-2">{{ $message }}</p>
-                                @enderror
                             </div>
-                            <div class="row mb-4">
-                                <div class="col-sm-12">
-                                    <label for="published"><i class="fas fa-rocket"></i>
-                                        {{ __('trans.publish') }}</label>
-                                    <input type="checkbox" name="published" />
-                                </div>
-                                @error('published')
-                                    <p class="mt-2">{{ $message }}</p>
-                                @enderror
-                            </div>
-                            <div class="row mb-4">
-                                <div class="col-sm-12">
-                                    <label for="product_image"><i class="fas fa-images"></i>
-                                        {{ __('trans.upload_product_image') }}
-                                    </label>
-                                    <input type="file" name="product_image" class="form-control">
-                                </div>
-                                @error('product_image')
-                                    <p class="mt-2">{{ $message }}</p>
-                                @enderror
-                            </div>
-                            <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 mt-4">
-                                <div class="widget-content widget-content-area ecommerce-create-section">
-                                    <div class="col-sm-12">
-                                        <button type="submit"
-                                            class="btn btn-success w-100">{{ __('trans.add_product') }}</button>
-                                    </div>
-                                </div>
+                            <div class="container">
+                                <button type="submit" class="btn btn-success w-100">
+                                    <i class="far fa-edit"></i> {{ __('trans.update_user') }}
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -122,6 +94,9 @@
                 <script src="{{ asset('plugins-rtl/filepond/filepondPluginFileValidateSize.min.js') }}"></script>
                 <script src="{{ asset('plugins-rtl/tagify/tagify.min.js') }}"></script>
                 @vite(['resources/rtl/assets/js/apps/ecommerce-create.js'])
+                <script type="module">
+            ecommerce.addFiles("{{Vite::asset('resources/rtl/images/product-1.jpg')}}", "{{Vite::asset('resources/rtl/images/product-3.jpg')}}", "{{Vite::asset('resources/rtl/images/product-5.jpg')}}");
+        </script>
                 </x-slot>
                 <!--  END CUSTOM SCRIPTS FILE  -->
 </x-rtl.base-layout>

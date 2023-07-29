@@ -53,14 +53,14 @@
                     </div>
                 </a>
             </li>
-            <li class="menu">
+            {{-- <li class="menu">
                 <a href="/customers" class="dropdown-toggle">
                     <div class="">
                         <i class="fas fa-people-carry"></i>
                         <span class="ml-1">{{ __('trans.customers') }}</span>
                     </div>
                 </a>
-            </li>
+            </li> --}}
             <li class="menu">
                 <a href="/orders" class="dropdown-toggle">
                     <div class="">

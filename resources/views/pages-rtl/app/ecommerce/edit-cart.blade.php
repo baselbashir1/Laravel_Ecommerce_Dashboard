@@ -1,4 +1,4 @@
-<x-base-layout :scrollspy="false">
+<x-rtl.base-layout :scrollspy="false">
 
     <x-slot:pageTitle>
         {{ $title }}
@@ -7,22 +7,22 @@
         <!-- BEGIN GLOBAL MANDATORY STYLES -->
         <x-slot:headerFiles>
             <!--  BEGIN CUSTOM STYLE FILE  -->
-            <link rel="stylesheet" href="{{ asset('plugins/filepond/filepond.min.css') }}">
-            <link rel="stylesheet" href="{{ asset('plugins/filepond/FilePondPluginImagePreview.min.css') }}">
-            <link rel="stylesheet" href="{{ asset('plugins/tagify/tagify.css') }}">
+            <link rel="stylesheet" href="{{ asset('plugins-rtl/filepond/filepond.min.css') }}">
+            <link rel="stylesheet" href="{{ asset('plugins-rtl/filepond/FilePondPluginImagePreview.min.css') }}">
+            <link rel="stylesheet" href="{{ asset('plugins-rtl/tagify/tagify.css') }}">
 
-            @vite(['resources/scss/light/assets/forms/switches.scss'])
-            @vite(['resources/scss/light/plugins/editors/quill/quill.snow.scss'])
-            @vite(['resources/scss/light/plugins/tagify/custom-tagify.scss'])
-            @vite(['resources/scss/light/plugins/filepond/custom-filepond.scss'])
+            @vite(['resources/rtl/scss/light/assets/forms/switches.scss'])
+            @vite(['resources/rtl/scss/light/plugins/editors/quill/quill.snow.scss'])
+            @vite(['resources/rtl/scss/light/plugins/tagify/custom-tagify.scss'])
+            @vite(['resources/rtl/scss/light/plugins/filepond/custom-filepond.scss'])
 
-            @vite(['resources/scss/dark/assets/forms/switches.scss'])
-            @vite(['resources/scss/dark/plugins/editors/quill/quill.snow.scss'])
-            @vite(['resources/scss/dark/plugins/tagify/custom-tagify.scss'])
-            @vite(['resources/scss/dark/plugins/filepond/custom-filepond.scss'])
+            @vite(['resources/rtl/scss/dark/assets/forms/switches.scss'])
+            @vite(['resources/rtl/scss/dark/plugins/editors/quill/quill.snow.scss'])
+            @vite(['resources/rtl/scss/dark/plugins/tagify/custom-tagify.scss'])
+            @vite(['resources/rtl/scss/dark/plugins/filepond/custom-filepond.scss'])
 
-            @vite(['resources/scss/light/assets/apps/ecommerce-create.scss'])
-            @vite(['resources/scss/dark/assets/apps/ecommerce-create.scss'])
+            @vite(['resources/rtl/scss/light/assets/apps/ecommerce-create.scss'])
+            @vite(['resources/rtl/scss/dark/assets/apps/ecommerce-create.scss'])
             <!--  END CUSTOM STYLE FILE  -->
             </x-slot>
             <!-- END GLOBAL MANDATORY STYLES -->
@@ -66,20 +66,20 @@
 
             <!--  BEGIN CUSTOM SCRIPTS FILE  -->
             <x-slot:footerFiles>
-                <script src="{{ asset('plugins/editors/quill/quill.js') }}"></script>
-                <script src="{{ asset('plugins/filepond/filepond.min.js') }}"></script>
-                <script src="{{ asset('plugins/filepond/FilePondPluginFileValidateType.min.js') }}"></script>
-                <script src="{{ asset('plugins/filepond/FilePondPluginImageExifOrientation.min.js') }}"></script>
-                <script src="{{ asset('plugins/filepond/FilePondPluginImagePreview.min.js') }}"></script>
-                <script src="{{ asset('plugins/filepond/FilePondPluginImageCrop.min.js') }}"></script>
-                <script src="{{ asset('plugins/filepond/FilePondPluginImageResize.min.js') }}"></script>
-                <script src="{{ asset('plugins/filepond/FilePondPluginImageTransform.min.js') }}"></script>
-                <script src="{{ asset('plugins/filepond/filepondPluginFileValidateSize.min.js') }}"></script>
-                <script src="{{ asset('plugins/tagify/tagify.min.js') }}"></script>
-                @vite(['resources/assets/js/apps/ecommerce-create.js'])
+                <script src="{{ asset('plugins-rtl/editors/quill/quill.js') }}"></script>
+                <script src="{{ asset('plugins-rtl/filepond/filepond.min.js') }}"></script>
+                <script src="{{ asset('plugins-rtl/filepond/FilePondPluginFileValidateType.min.js') }}"></script>
+                <script src="{{ asset('plugins-rtl/filepond/FilePondPluginImageExifOrientation.min.js') }}"></script>
+                <script src="{{ asset('plugins-rtl/filepond/FilePondPluginImagePreview.min.js') }}"></script>
+                <script src="{{ asset('plugins-rtl/filepond/FilePondPluginImageCrop.min.js') }}"></script>
+                <script src="{{ asset('plugins-rtl/filepond/FilePondPluginImageResize.min.js') }}"></script>
+                <script src="{{ asset('plugins-rtl/filepond/FilePondPluginImageTransform.min.js') }}"></script>
+                <script src="{{ asset('plugins-rtl/filepond/filepondPluginFileValidateSize.min.js') }}"></script>
+                <script src="{{ asset('plugins-rtl/tagify/tagify.min.js') }}"></script>
+                @vite(['resources/rtl/assets/js/apps/ecommerce-create.js'])
                 <script type="module">
-            ecommerce.addFiles("{{Vite::asset('resources/images/product-1.jpg')}}", "{{Vite::asset('resources/images/product-3.jpg')}}", "{{Vite::asset('resources/images/product-5.jpg')}}");
+            ecommerce.addFiles("{{Vite::asset('resources/rtl/images/product-1.jpg')}}", "{{Vite::asset('resources/rtl/images/product-3.jpg')}}", "{{Vite::asset('resources/rtl/images/product-5.jpg')}}");
         </script>
                 </x-slot>
                 <!--  END CUSTOM SCRIPTS FILE  -->
-</x-base-layout>
+</x-rtl.base-layout>

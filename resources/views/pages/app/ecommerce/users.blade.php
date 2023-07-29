@@ -23,8 +23,7 @@
             <div class="row layout-top-spacing">
                 <div class="col-xl-12 col-lg-6">
                     <a href="/user/add" class="btn btn-primary w-100 btn-lg mb-4">
-                        <span class="btn-text-inner"><i class="fab fa-servicestack"></i>
-                            Add New User</span>
+                        <span class="btn-text-inner">{{ __('trans.add_new_user') }}</span>
                     </a>
                 </div>
             </div>
@@ -35,12 +34,12 @@
                         <table id="ecommerce-list" class="table dt-table-hover" style="width:100%">
                             <thead>
                                 <tr>
-                                    <th>name</th>
-                                    <th>email</th>
-                                    <th>password</th>
-                                    <th>role</th>
-                                    <th>created at</th>
-                                    <th class="no-content text-center">{{ __('trans.action') }}</th>
+                                    <th><i class="fas fa-id-card"></i> {{ __('trans.name') }}</th>
+                                    <th><i class="fas fa-envelope"></i> {{ __('trans.email') }}</th>
+                                    <th><i class="fas fa-lock"></i> {{ __('trans.password') }}</th>
+                                    <th><i class="fas fa-gem"></i> {{ __('trans.role') }}</th>
+                                    <th class="no-content text-center"><i class="fas fa-recycle"></i>
+                                        {{ __('trans.action') }}</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -57,8 +56,6 @@
                                                     Normal user
                                                 @endif
                                             </td>
-                                            <td>{{ $user->created_at }}</td>
-
                                             <td class="text-center">
                                                 <div style="display: flex">
                                                     <a href="/user/{{ $user->id }}/edit"

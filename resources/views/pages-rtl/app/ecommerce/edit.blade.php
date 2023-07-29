@@ -51,7 +51,7 @@
                             </div>
                             <div class="row mb-4">
                                 <div class="col-sm-12">
-                                    <label for="title"><i class="fab fa-servicestack"></i>
+                                    <label for="title"><i class="fas fa-pen"></i>
                                         {{ __('trans.product_title') }}</label>
                                     <input type="text" name="title" class="form-control"
                                         placeholder="{{ __('trans.product_title') }}" value="{{ $product->title }}">
@@ -59,7 +59,7 @@
                             </div>
                             <div class="row mb-4">
                                 <div class="col-sm-12">
-                                    <label for="price"><i class="fab fa-servicestack"></i>
+                                    <label for="price"><i class="far fa-money-bill-alt"></i>
                                         {{ __('trans.product_price') }}</label>
                                     <input type="number" name="price" class="form-control"
                                         placeholder="{{ __('trans.product_price') }}" value="{{ $product->price }}">
@@ -75,9 +75,9 @@
                             </div>
                             <div class="row mb-4">
                                 <div class="col-sm-12">
-                                    <label for="published"><i class="fas fa-book-open"></i>
+                                    <label for="published"><i class="fas fa-rocket"></i>
                                         {{ __('trans.publish') }}</label>
-                                    <input type="checkbox" name="published" class="form-control" />
+                                    <input type="checkbox" name="published" />
                                 </div>
                             </div>
                             <div class="container">
@@ -145,7 +145,7 @@
                                 </div>
                                 <div class="container">
                                     <button type="submit" class="btn btn-primary w-100">
-                                        <i class="far fa-edit"></i> {{ __('trans.add_image') }}
+                                        {{ __('trans.add_image') }}
                                     </button>
                                 </div>
                             </form>
@@ -154,7 +154,7 @@
                 </div>
             @else
                 <div class="row mb-4 layout-spacing layout-top-spacing">
-                    <h3><i class="fas fa-images"></i> No images for this product</h3>
+                    <h3><i class="fas fa-images"></i> {{ __('trans.no_images') }}</h3>
                     <div class="col-xxl-9 col-xl-12 col-lg-12 col-md-12 col-sm-12 mt-4">
                         <div class="widget-content widget-content-area ecommerce-create-section">
                             <form method="POST" action="/edit-product/{{ $product->id }}/add-product-image"
@@ -165,7 +165,7 @@
                                 </div>
                                 <div class="container">
                                     <button type="submit" class="btn btn-primary w-100">
-                                        <i class="far fa-edit"></i> Add Image
+                                        {{ __('trans.add_image') }}
                                     </button>
                                 </div>
                             </form>

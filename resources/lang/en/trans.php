@@ -16,6 +16,11 @@ return [
     'product_images' => 'Product Images',
     'add_product' => 'Add Product',
 
+    'total_price' => 'Total Price',
+    'status' => 'Status',
+    'user' => 'User',
+    'no_images' => 'No images for this product',
+
     'add_new_product' => 'Add New Product',
     'update_product_details' => 'Update Product Details',
     'upload_product_images' => 'Upload Product Images',
@@ -58,6 +63,23 @@ return [
     'dont_have_account' => "Dont't have an account ?",
     'have_account' => 'Already have an account ?',
     'agree' => 'I agree the',
-    'terms_conditions' => 'Terms and Conditions'
+    'terms_conditions' => 'Terms and Conditions',
+
+    'add_new_user' => 'Add New User',
+    'name' => 'Name',
+    'email' => 'Email',
+    'password' => 'Password',
+    'role' => 'Role',
+    'admin' => 'Admin',
+    'normal_user' => 'Normal User',
+    'update_user' => 'Update User',
+    'edit_user' => 'Edit User',
+    'amount' => 'Amount',
+    'type' => 'Type',
+    'update_cart' => 'Update Cart',
+    'edit_cart' => 'Edit Cart',
+    'view_all_orders' => 'View all orders',
+    'order_details' => 'Order Details',
+
 
 ];

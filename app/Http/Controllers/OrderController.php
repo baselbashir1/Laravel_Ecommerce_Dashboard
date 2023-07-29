@@ -13,18 +13,15 @@ class OrderController extends Controller
     {
         $orders = Order::all();
 
-        // $username = Order::query()
-        //     ->select([DB::raw('u.name')])
-        //     ->join('users AS u', 'u.id', '=', 'created_by')
-        //     ->first();
-
-        return view('pages.app.ecommerce.orders', ['title' => 'Orders'], ['orders' => $orders]);
+        if (app()->getLocale() == 'en') return view('pages.app.ecommerce.orders', ['title' => __('trans.orders')], ['orders' => $orders]);
+        if (app()->getLocale() == 'ar') return view('pages-rtl.app.ecommerce.orders', ['title' => __('trans.orders')], ['orders' => $orders]);
     }
 
     public function show($id)
     {
         $orderItems = OrderItem::where('order_id', $id)->get();
 
-        return view('pages.app.ecommerce.order-details', ['title' => 'Order Details'], ['orderItems' => $orderItems]);
+        if (app()->getLocale() == 'en') return view('pages.app.ecommerce.order-details', ['title' => __('trans.order_details')], ['orderItems' => $orderItems]);
+        if (app()->getLocale() == 'ar') return view('pages-rtl.app.ecommerce.order-details', ['title' => __('trans.order_details')], ['orderItems' => $orderItems]);
     }
 }

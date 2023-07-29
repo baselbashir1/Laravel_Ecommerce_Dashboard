@@ -1,4 +1,4 @@
-<x-base-layout :scrollspy="false">
+<x-rtl.base-layout :scrollspy="false">
 
     <x-slot:pageTitle>
         {{ $title }}
@@ -7,9 +7,9 @@
         <!-- BEGIN GLOBAL MANDATORY STYLES -->
         <x-slot:headerFiles>
             <!--  BEGIN CUSTOM STYLE FILE  -->
-            <link rel="stylesheet" href="{{ asset('plugins/table/datatable/datatables.css') }}">
-            @vite(['resources/scss/light/plugins/table/datatable/dt-global_style.scss'])
-            @vite(['resources/scss/dark/plugins/table/datatable/dt-global_style.scss'])
+            <link rel="stylesheet" href="{{ asset('plugins-rtl/table/datatable/datatables.css') }}">
+            @vite(['resources/rtl/scss/light/plugins/table/datatable/dt-global_style.scss'])
+            @vite(['resources/rtl/scss/dark/plugins/table/datatable/dt-global_style.scss'])
             <!--  END CUSTOM STYLE FILE  -->
 
             <style>
@@ -65,10 +65,10 @@
 
             <!--  BEGIN CUSTOM SCRIPTS FILE  -->
             <x-slot:footerFiles>
-                <script type="module" src="{{asset('plugins/global/vendors.min.js')}}"></script>
-                @vite(['resources/assets/js/custom.js'])
-                <script type="module" src="{{asset('plugins/table/datatable/datatables.js')}}"></script>
+                <script type="module" src="{{asset('plugins-rtl/global/vendors.min.js')}}"></script>
+                @vite(['resources/rtl/assets/js/custom.js'])
+                <script type="module" src="{{asset('plugins-rtl/table/datatable/datatables.js')}}"></script>
 
                 </x-slot>
                 <!--  END CUSTOM SCRIPTS FILE  -->
-</x-base-layout>
+                </x-rt.base-layout>

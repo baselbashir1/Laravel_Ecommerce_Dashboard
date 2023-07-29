@@ -22,8 +22,8 @@
 
             <div class="row layout-top-spacing">
                 <div class="col-xl-12 col-lg-6">
-                    <a href="/product/add" class="btn btn-primary w-100 btn-lg mb-4">
-                        <span class="btn-text-inner">{{ __('trans.add_new_product') }}</span>
+                    <a href="/user/add" class="btn btn-primary w-100 btn-lg mb-4">
+                        <span class="btn-text-inner">{{ __('trans.add_new_user') }}</span>
                     </a>
                 </div>
             </div>
@@ -34,39 +34,35 @@
                         <table id="ecommerce-list" class="table dt-table-hover" style="width:100%">
                             <thead>
                                 <tr>
-                                    <th><i class="fas fa-pen"></i> {{ __('trans.product_title') }}</th>
-                                    <th><i class="fas fa-image"></i> {{ __('trans.product_image') }}</th>
-                                    <th><i class="far fa-money-bill-alt"></i> {{ __('trans.product_price') }}</th>
-                                    <th><i class="fas fa-book-open"></i> {{ __('trans.product_description') }}</th>
+                                    <th><i class="fas fa-id-card"></i> {{ __('trans.name') }}</th>
+                                    <th><i class="fas fa-envelope"></i> {{ __('trans.email') }}</th>
+                                    <th><i class="fas fa-lock"></i> {{ __('trans.password') }}</th>
+                                    <th><i class="fas fa-gem"></i> {{ __('trans.role') }}</th>
                                     <th class="no-content text-center"><i class="fas fa-recycle"></i>
                                         {{ __('trans.action') }}</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @unless (count((array) $products) == 0)
-                                    @foreach ($products as $product)
+                                @unless (count((array) $users) == 0)
+                                    @foreach ($users as $user)
                                         <tr>
-                                            <td>{{ $product->title }}</td>
+                                            <td>{{ $user->name }}</td>
+                                            <td>{{ $user->email }}</td>
+                                            <td>{{ substr($user->password, 0, 10) }}</td>
                                             <td>
-                                                <div class="d-flex justify-content-left align-items-center">
-                                                    <div class="avatar me-3">
-                                                        <img src="{{ $product->image? app('firebase.storage')->getBucket()->object('Images/' . $product->image)->signedUrl(new DateTime('9999-01-01')): asset('no-image.png') }}"
-                                                            alt="Avatar" width="64" height="64">
-                                                    </div>
-                                                </div>
+                                                @if ($user->is_admin == 1)
+                                                    Admin
+                                                @else
+                                                    Normal user
+                                                @endif
                                             </td>
-                                            <td>{{ $product->price }} $</td>
-                                            <td>{{ substr($product->description, 0, 15) }}...</td>
                                             <td class="text-center">
                                                 <div style="display: flex">
-                                                    <a href="/product/{{ $product->id }}/details"
-                                                        style="width: 50px; height: 40px"
-                                                        class="btn btn-primary mt-2 mb-1"><i class="fas fa-info"></i></a>
-                                                    <a href="/product/{{ $product->id }}/edit"
+                                                    <a href="/user/{{ $user->id }}/edit"
                                                         style="width: 50px; height: 40px" class="btn btn-success m-2"><i
                                                             class="far fa-edit"></i></a>
                                                     <form method="POST" class="mt-2"
-                                                        action="delete-product/{{ $product->id }}">
+                                                        action="/delete-user/{{ $user->id }}">
                                                         @csrf
                                                         <button type="submit" class="btn btn-danger"
                                                             style="width: 50px; height: 40px">
@@ -93,4 +89,4 @@
 
                 </x-slot>
                 <!--  END CUSTOM SCRIPTS FILE  -->
-</x-rtl.base-layout>
+                </x-rt.base-layout>
