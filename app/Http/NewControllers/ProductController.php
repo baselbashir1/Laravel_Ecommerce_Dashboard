@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Services\ProductService;
-use Illuminate\Http\Request;
 use Exception;
+use Illuminate\Http\Request;
+use App\Http\Services\ProductService;
 
 class ProductController extends Controller
 {
-    private ProductService $productService;
+
+    private $productService;
 
     public function __construct(ProductService $productService)
     {
@@ -17,23 +18,31 @@ class ProductController extends Controller
 
     public function index()
     {
-        $products = $this->productService->getAllProducts();
+        try {
+            $products = $this->productService->getAllProducts();
 
-        if (app()->getLocale() == 'en')
-            return view('pages.app.ecommerce.list', ['title' => __('trans.products')], ['products' => $products]);
-        if (app()->getLocale() == 'ar')
-            return view('pages-rtl.app.ecommerce.list', ['title' => __('trans.products')], ['products' => $products]);
+            if (app()->getLocale() == 'en')
+                return view('pages.app.ecommerce.list', ['title' => __('trans.products')], ['products' => $products]);
+            if (app()->getLocale() == 'ar')
+                return view('pages-rtl.app.ecommerce.list', ['title' => __('trans.products')], ['products' => $products]);
+        } catch (Exception $e) {
+            throw $e;
+        }
     }
 
     public function show($id)
     {
-        $product = $this->productService->getProductById($id);
-        $productImages = $this->productService->getProductImagesForImage($product->id);
+        try {
+            $product = $this->productService->getProductById($id);
+            $productImages = $this->productService->getProductImagesForImage($product->id);
 
-        if (app()->getLocale() == 'en')
-            return view('pages.app.ecommerce.detail', ['title' => __('trans.product_details')], ['product' => $product, 'productImages' => $productImages]);
-        if (app()->getLocale() == 'ar')
-            return view('pages-rtl.app.ecommerce.detail', ['title' => __('trans.product_details')], ['product' => $product, 'productImages' => $productImages]);
+            if (app()->getLocale() == 'en')
+                return view('pages.app.ecommerce.detail', ['title' => __('trans.product_details')], ['product' => $product, 'productImages' => $productImages]);
+            if (app()->getLocale() == 'ar')
+                return view('pages-rtl.app.ecommerce.detail', ['title' => __('trans.product_details')], ['product' => $product, 'productImages' => $productImages]);
+        } catch (Exception $e) {
+            throw $e;
+        }
     }
 
     public function create()
@@ -50,19 +59,23 @@ class ProductController extends Controller
             $this->productService->createProduct($request);
             return redirect('/products');
         } catch (Exception $e) {
-            return back()->withException($e);
+            throw $e;
         }
     }
 
     public function edit($id)
     {
-        $product = $this->productService->getProductById($id);
-        $productImages = $this->productService->getProductImagesForImage($product->id);
+        try {
+            $product = $this->productService->getProductById($id);
+            $productImages = $this->productService->getProductImagesForImage($product->id);
 
-        if (app()->getLocale() == 'en')
-            return view('pages.app.ecommerce.edit', ['title' => __('trans.edit_product')], ['product' => $product, 'productImages' => $productImages]);
-        if (app()->getLocale() == 'ar')
-            return view('pages-rtl.app.ecommerce.edit', ['title' => __('trans.edit_product')], ['product' => $product, 'productImages' => $productImages]);
+            if (app()->getLocale() == 'en')
+                return view('pages.app.ecommerce.edit', ['title' => __('trans.edit_product')], ['product' => $product, 'productImages' => $productImages]);
+            if (app()->getLocale() == 'ar')
+                return view('pages-rtl.app.ecommerce.edit', ['title' => __('trans.edit_product')], ['product' => $product, 'productImages' => $productImages]);
+        } catch (Exception $e) {
+            throw $e;
+        }
     }
 
     public function update(Request $request, $id)
@@ -71,7 +84,7 @@ class ProductController extends Controller
             $this->productService->updateProduct($request, $id);
             return redirect('/products');
         } catch (Exception $e) {
-            return back()->withException($e);
+            throw $e;
         }
     }
 
@@ -79,9 +92,9 @@ class ProductController extends Controller
     {
         try {
             $this->productService->deleteProduct($id);
-            return redirect('/products');
+            return back();
         } catch (Exception $e) {
-            return back()->withException($e);
+            throw $e;
         }
     }
 
@@ -91,7 +104,7 @@ class ProductController extends Controller
             $this->productService->addProductImage($request, $id);
             return redirect()->route('edit-product', $id);
         } catch (Exception $e) {
-            return back()->withException($e);
+            throw $e;
         }
     }
 
@@ -101,7 +114,7 @@ class ProductController extends Controller
             $this->productService->editProductImage($request, $productId, $productImageId);
             return redirect()->route('edit-product', $productId);
         } catch (Exception $e) {
-            return back()->withException($e);
+            throw $e;
         }
     }
 
@@ -111,7 +124,7 @@ class ProductController extends Controller
             $this->productService->deleteProductImage($productId, $productImageId);
             return redirect()->route('edit-product', $productId);
         } catch (Exception $e) {
-            return back()->withException($e);
+            throw $e;
         }
     }
 }
